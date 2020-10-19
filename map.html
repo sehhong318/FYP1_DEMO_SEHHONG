@@ -1,0 +1,3752 @@
+<!DOCTYPE html>
+<head>
+    
+    <title>SEHHONG_FYP1_DEMO</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2b661232ab3d49d794ee59cfbf02b426 {
+                    position: relative;
+                    width: 1500.0px;
+                    height: 1000.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    
+            <style>
+                #scroll_zoom_toggler_693b0c31af90447a9ad6e61cd433c2df {
+                    position:absolute;
+                    width:35px;
+                    bottom:10px;
+                    height:35px;
+                    left:10px;
+                    background-color:#fff;
+                    text-align:center;
+                    line-height:35px;
+                    vertical-align: middle;
+                    }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.fullscreen/1.4.2/Control.FullScreen.min.css"/>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_2b661232ab3d49d794ee59cfbf02b426" ></div>
+        
+    
+            <img id="scroll_zoom_toggler_693b0c31af90447a9ad6e61cd433c2df"
+                 alt="scroll"
+                 src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/png/512/arrow-move.png"
+                 style="z-index: 999999"
+                 onclick="map_2b661232ab3d49d794ee59cfbf02b426.toggleScroll()">
+            </img>
+        
+</body>
+<script>    
+    
+            var map_2b661232ab3d49d794ee59cfbf02b426 = L.map(
+                "map_2b661232ab3d49d794ee59cfbf02b426",
+                {
+                    center: [3.201843, 101.486158],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 12,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4e8e0fa6616549deb2dd688ec309ca12 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var tile_layer_a2a861af7ee446ffb1b233e1d4d51e41 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_f1ad6904aa14484c82ea15c3d1127f7d = new L.Control.MiniMap(
+                tile_layer_a2a861af7ee446ffb1b233e1d4d51e41,
+                {"autoToggleDisplay": false, "centerFixed": false, "collapsedHeight": 25, "collapsedWidth": 25, "height": 150, "minimized": false, "position": "bottomright", "tiles": "CartoDB Positron", "toggleDisplay": true, "width": 150, "zoomAnimation": false, "zoomLevelOffset": -5}
+            );
+            map_2b661232ab3d49d794ee59cfbf02b426.addControl(mini_map_f1ad6904aa14484c82ea15c3d1127f7d);
+        
+    
+            map_2b661232ab3d49d794ee59cfbf02b426.scrollEnabled = true;
+
+            map_2b661232ab3d49d794ee59cfbf02b426.toggleScroll = function() {
+                if (this.scrollEnabled) {
+                    this.scrollEnabled = false;
+                    this.scrollWheelZoom.disable();
+                } else {
+                    this.scrollEnabled = true;
+                    this.scrollWheelZoom.enable();
+                }
+            };
+            map_2b661232ab3d49d794ee59cfbf02b426.toggleScroll();
+        
+    
+            L.control.fullscreen(
+                {"forceSeparateButton": false, "position": "topleft", "title": "Full Screen", "titleCancel": "Exit Full Screen"}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var marker_3cb6922a8fe842a6b85ed4f0dc5d352b = L.marker(
+                [3.201843, 101.48615799999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_411d0c339af945e69508e4a6d8ca6e91 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_3cb6922a8fe842a6b85ed4f0dc5d352b.setIcon(icon_411d0c339af945e69508e4a6d8ca6e91);
+        
+    
+        var popup_81ab63c0679342b0adf3082d9e3e1e4f = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_d43610e09c7a4621a4014f32b0ac2409 = $(`<div id="html_d43610e09c7a4621a4014f32b0ac2409" style="width: 100.0%; height: 100.0%;"><h3> Location 1 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA SELANGOR <br> CITY: SUNGAI BULOH <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_81ab63c0679342b0adf3082d9e3e1e4f.setContent(html_d43610e09c7a4621a4014f32b0ac2409);
+        
+
+        marker_3cb6922a8fe842a6b85ed4f0dc5d352b.bindPopup(popup_81ab63c0679342b0adf3082d9e3e1e4f)
+        ;
+
+        
+    
+    
+            marker_3cb6922a8fe842a6b85ed4f0dc5d352b.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e8e06f5b0494739be571e7cfb91d865 = L.marker(
+                [3.029366, 101.625261],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_d8009b96b2984755aadb5e5a35105f6d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0e8e06f5b0494739be571e7cfb91d865.setIcon(icon_d8009b96b2984755aadb5e5a35105f6d);
+        
+    
+        var popup_6788594b3b92482aa39d7ce07407fc65 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_cb63ab277b30470ea9d51490cd6108cd = $(`<div id="html_cb63ab277b30470ea9d51490cd6108cd" style="width: 100.0%; height: 100.0%;"><h3> Location 2 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PUCHONG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_6788594b3b92482aa39d7ce07407fc65.setContent(html_cb63ab277b30470ea9d51490cd6108cd);
+        
+
+        marker_0e8e06f5b0494739be571e7cfb91d865.bindPopup(popup_6788594b3b92482aa39d7ce07407fc65)
+        ;
+
+        
+    
+    
+            marker_0e8e06f5b0494739be571e7cfb91d865.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c2b4952569a643a1a6a74f000424eb9b = L.marker(
+                [3.080054, 101.616741],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_266e1d1310ec45b884ac7c1f2193bdf6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c2b4952569a643a1a6a74f000424eb9b.setIcon(icon_266e1d1310ec45b884ac7c1f2193bdf6);
+        
+    
+        var popup_b025d05f7cf04c45ac4289effbbfd62d = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_fc6f04a27225414d86ffaf0b4f8418b7 = $(`<div id="html_fc6f04a27225414d86ffaf0b4f8418b7" style="width: 100.0%; height: 100.0%;"><h3> Location 3 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_b025d05f7cf04c45ac4289effbbfd62d.setContent(html_fc6f04a27225414d86ffaf0b4f8418b7);
+        
+
+        marker_c2b4952569a643a1a6a74f000424eb9b.bindPopup(popup_b025d05f7cf04c45ac4289effbbfd62d)
+        ;
+
+        
+    
+    
+            marker_c2b4952569a643a1a6a74f000424eb9b.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d23c0f8b1560459ca5f18cad265a63d9 = L.marker(
+                [2.990576, 101.546973],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_5d4e3360ec8a4b8ea843764b38fde098 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_d23c0f8b1560459ca5f18cad265a63d9.setIcon(icon_5d4e3360ec8a4b8ea843764b38fde098);
+        
+    
+        var popup_191e2149be0843d7b65b0f3dad7dc9ee = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_521885a4d5e642e0a6cb05449a342306 = $(`<div id="html_521885a4d5e642e0a6cb05449a342306" style="width: 100.0%; height: 100.0%;"><h3> Location 4 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_191e2149be0843d7b65b0f3dad7dc9ee.setContent(html_521885a4d5e642e0a6cb05449a342306);
+        
+
+        marker_d23c0f8b1560459ca5f18cad265a63d9.bindPopup(popup_191e2149be0843d7b65b0f3dad7dc9ee)
+        ;
+
+        
+    
+    
+            marker_d23c0f8b1560459ca5f18cad265a63d9.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_10908c701d7646efb29697d9f4b526d5 = L.marker(
+                [3.061035, 101.610509],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_8930f2169c944a908427d91e98ec6bbf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_10908c701d7646efb29697d9f4b526d5.setIcon(icon_8930f2169c944a908427d91e98ec6bbf);
+        
+    
+        var popup_aea45eaed0fe4e5ca2eeb39363c3674e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_c6db158934014b30a83b56c6a7de5585 = $(`<div id="html_c6db158934014b30a83b56c6a7de5585" style="width: 100.0%; height: 100.0%;"><h3> Location 5 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_aea45eaed0fe4e5ca2eeb39363c3674e.setContent(html_c6db158934014b30a83b56c6a7de5585);
+        
+
+        marker_10908c701d7646efb29697d9f4b526d5.bindPopup(popup_aea45eaed0fe4e5ca2eeb39363c3674e)
+        ;
+
+        
+    
+    
+            marker_10908c701d7646efb29697d9f4b526d5.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ce183de6181748bc96015d797d07f50d = L.marker(
+                [3.015165, 101.793898],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_c45fea3bf053497fad542e03f4d781b9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_ce183de6181748bc96015d797d07f50d.setIcon(icon_c45fea3bf053497fad542e03f4d781b9);
+        
+    
+        var popup_7f4773681b9d4bdeb42c98420719f741 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_236392722fa94a22b6b8aa34f22dab73 = $(`<div id="html_236392722fa94a22b6b8aa34f22dab73" style="width: 100.0%; height: 100.0%;"><h3> Location 6 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_7f4773681b9d4bdeb42c98420719f741.setContent(html_236392722fa94a22b6b8aa34f22dab73);
+        
+
+        marker_ce183de6181748bc96015d797d07f50d.bindPopup(popup_7f4773681b9d4bdeb42c98420719f741)
+        ;
+
+        
+    
+    
+            marker_ce183de6181748bc96015d797d07f50d.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d5c09a986974de4b35b25035fb2b167 = L.marker(
+                [3.048629, 101.534398],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_a1d9ba3f1a4e45e8903580c7f9fcc063 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0d5c09a986974de4b35b25035fb2b167.setIcon(icon_a1d9ba3f1a4e45e8903580c7f9fcc063);
+        
+    
+        var popup_86e2603d65774222943923caaafb1e0e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_46c319362b4a437ea7e82deef5dc1194 = $(`<div id="html_46c319362b4a437ea7e82deef5dc1194" style="width: 100.0%; height: 100.0%;"><h3> Location 7 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_86e2603d65774222943923caaafb1e0e.setContent(html_46c319362b4a437ea7e82deef5dc1194);
+        
+
+        marker_0d5c09a986974de4b35b25035fb2b167.bindPopup(popup_86e2603d65774222943923caaafb1e0e)
+        ;
+
+        
+    
+    
+            marker_0d5c09a986974de4b35b25035fb2b167.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d496552ae6e4c13ba88b3fd8e358dc2 = L.marker(
+                [2.988251, 101.424847],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_9456bb211d1f489e8536274aacb76a84 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6d496552ae6e4c13ba88b3fd8e358dc2.setIcon(icon_9456bb211d1f489e8536274aacb76a84);
+        
+    
+        var popup_ad89c79457ff4b8b8014eea6dea0e285 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_5eb4591d6fbd4b03a031b87dca354135 = $(`<div id="html_5eb4591d6fbd4b03a031b87dca354135" style="width: 100.0%; height: 100.0%;"><h3> Location 8 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_ad89c79457ff4b8b8014eea6dea0e285.setContent(html_5eb4591d6fbd4b03a031b87dca354135);
+        
+
+        marker_6d496552ae6e4c13ba88b3fd8e358dc2.bindPopup(popup_ad89c79457ff4b8b8014eea6dea0e285)
+        ;
+
+        
+    
+    
+            marker_6d496552ae6e4c13ba88b3fd8e358dc2.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_104a3e8608164a70be00104200803bda = L.marker(
+                [3.1366389999999997, 101.621012],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_b1c1a639a1cd4fa5a83651addf274270 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_104a3e8608164a70be00104200803bda.setIcon(icon_b1c1a639a1cd4fa5a83651addf274270);
+        
+    
+        var popup_1124f4e654f54770825843607b402129 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_8b6093c537394289ac90be1abd3a177d = $(`<div id="html_8b6093c537394289ac90be1abd3a177d" style="width: 100.0%; height: 100.0%;"><h3> Location 9 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_1124f4e654f54770825843607b402129.setContent(html_8b6093c537394289ac90be1abd3a177d);
+        
+
+        marker_104a3e8608164a70be00104200803bda.bindPopup(popup_1124f4e654f54770825843607b402129)
+        ;
+
+        
+    
+    
+            marker_104a3e8608164a70be00104200803bda.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_77268ec43b9a4f28b8e38aaa99ac3e30 = L.marker(
+                [3.0085, 101.426295],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_f15ec1aeb8f948b98e05dab40dc1364c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_77268ec43b9a4f28b8e38aaa99ac3e30.setIcon(icon_f15ec1aeb8f948b98e05dab40dc1364c);
+        
+    
+        var popup_6cc5d40cc7d647e09b57942c4d62bae6 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_1526c8d99d324f14a1ff248eba7a92c1 = $(`<div id="html_1526c8d99d324f14a1ff248eba7a92c1" style="width: 100.0%; height: 100.0%;"><h3> Location 10 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_6cc5d40cc7d647e09b57942c4d62bae6.setContent(html_1526c8d99d324f14a1ff248eba7a92c1);
+        
+
+        marker_77268ec43b9a4f28b8e38aaa99ac3e30.bindPopup(popup_6cc5d40cc7d647e09b57942c4d62bae6)
+        ;
+
+        
+    
+    
+            marker_77268ec43b9a4f28b8e38aaa99ac3e30.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_59bebc41b2324cf88dd0ea6eee8f0615 = L.marker(
+                [3.052245, 101.462932],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_73f23543043b4e5db9f585a2e591897f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_59bebc41b2324cf88dd0ea6eee8f0615.setIcon(icon_73f23543043b4e5db9f585a2e591897f);
+        
+    
+        var popup_d1664d003fb84acab953f9a785591a54 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_7dca9ab8616240b48bce8b4fc106cf2f = $(`<div id="html_7dca9ab8616240b48bce8b4fc106cf2f" style="width: 100.0%; height: 100.0%;"><h3> Location 11 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_d1664d003fb84acab953f9a785591a54.setContent(html_7dca9ab8616240b48bce8b4fc106cf2f);
+        
+
+        marker_59bebc41b2324cf88dd0ea6eee8f0615.bindPopup(popup_d1664d003fb84acab953f9a785591a54)
+        ;
+
+        
+    
+    
+            marker_59bebc41b2324cf88dd0ea6eee8f0615.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_909e01347d0d4c7d9040494609ffc116 = L.marker(
+                [3.089404, 101.544859],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_144aca95fc94491984acae8078cd3862 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_909e01347d0d4c7d9040494609ffc116.setIcon(icon_144aca95fc94491984acae8078cd3862);
+        
+    
+        var popup_64985e68b1514b989d781caa26e82d68 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_9f3214fcd76244618a77a87be5df616d = $(`<div id="html_9f3214fcd76244618a77a87be5df616d" style="width: 100.0%; height: 100.0%;"><h3> Location 12 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_64985e68b1514b989d781caa26e82d68.setContent(html_9f3214fcd76244618a77a87be5df616d);
+        
+
+        marker_909e01347d0d4c7d9040494609ffc116.bindPopup(popup_64985e68b1514b989d781caa26e82d68)
+        ;
+
+        
+    
+    
+            marker_909e01347d0d4c7d9040494609ffc116.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_074ad9b28c594fc38184ea02d5b174cc = L.marker(
+                [3.237159, 101.4239902],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_49b0f4005a5e4e58b594f19252c920b4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_074ad9b28c594fc38184ea02d5b174cc.setIcon(icon_49b0f4005a5e4e58b594f19252c920b4);
+        
+    
+        var popup_bd618f79311442a1b30f3f9904898234 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_6f3338d6de71467aba3cebefa67c06f5 = $(`<div id="html_6f3338d6de71467aba3cebefa67c06f5" style="width: 100.0%; height: 100.0%;"><h3> Location 13 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA SELANGOR <br> CITY: BANDAR PUNCAK ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_bd618f79311442a1b30f3f9904898234.setContent(html_6f3338d6de71467aba3cebefa67c06f5);
+        
+
+        marker_074ad9b28c594fc38184ea02d5b174cc.bindPopup(popup_bd618f79311442a1b30f3f9904898234)
+        ;
+
+        
+    
+    
+            marker_074ad9b28c594fc38184ea02d5b174cc.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_15581a8e17034e609b58bf3e014a6938 = L.marker(
+                [2.8593900000000003, 101.6747623],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_ef6fcb32ca7646fba54e0a57b790ba9d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_15581a8e17034e609b58bf3e014a6938.setIcon(icon_ef6fcb32ca7646fba54e0a57b790ba9d);
+        
+    
+        var popup_381f084ce01f4462ac4995319e593906 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_92baa2e5157d4b62a6b331bab0b6ecd5 = $(`<div id="html_92baa2e5157d4b62a6b331bab0b6ecd5" style="width: 100.0%; height: 100.0%;"><h3> Location 14 </h3> <br> STATE: SELANGOR <br> DISTRICT: SEPANG <br> CITY: DENGKIL <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_381f084ce01f4462ac4995319e593906.setContent(html_92baa2e5157d4b62a6b331bab0b6ecd5);
+        
+
+        marker_15581a8e17034e609b58bf3e014a6938.bindPopup(popup_381f084ce01f4462ac4995319e593906)
+        ;
+
+        
+    
+    
+            marker_15581a8e17034e609b58bf3e014a6938.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a77e070e56eb4a57aad2a1fc0d00deb4 = L.marker(
+                [3.042345, 101.522887],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_b1bbade9236543fb8c922cbde0daaf20 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_a77e070e56eb4a57aad2a1fc0d00deb4.setIcon(icon_b1bbade9236543fb8c922cbde0daaf20);
+        
+    
+        var popup_41024f8b99624796a61b144978963879 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_43721e9c4cbe458594994f9d30e1dd80 = $(`<div id="html_43721e9c4cbe458594994f9d30e1dd80" style="width: 100.0%; height: 100.0%;"><h3> Location 15 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_41024f8b99624796a61b144978963879.setContent(html_43721e9c4cbe458594994f9d30e1dd80);
+        
+
+        marker_a77e070e56eb4a57aad2a1fc0d00deb4.bindPopup(popup_41024f8b99624796a61b144978963879)
+        ;
+
+        
+    
+    
+            marker_a77e070e56eb4a57aad2a1fc0d00deb4.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6f9322e69cbd450d80e8e199bd9c3498 = L.marker(
+                [3.084666, 101.522087],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_e751557eb0ba44539c6983fc67974830 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6f9322e69cbd450d80e8e199bd9c3498.setIcon(icon_e751557eb0ba44539c6983fc67974830);
+        
+    
+        var popup_25c46e3ed7fb4e01b6aed89ed9512dbb = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_fecba35cc1094c3eb7c80fe1b5a7634c = $(`<div id="html_fecba35cc1094c3eb7c80fe1b5a7634c" style="width: 100.0%; height: 100.0%;"><h3> Location 16 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_25c46e3ed7fb4e01b6aed89ed9512dbb.setContent(html_fecba35cc1094c3eb7c80fe1b5a7634c);
+        
+
+        marker_6f9322e69cbd450d80e8e199bd9c3498.bindPopup(popup_25c46e3ed7fb4e01b6aed89ed9512dbb)
+        ;
+
+        
+    
+    
+            marker_6f9322e69cbd450d80e8e199bd9c3498.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_82c0d3390282491fbcfaa563e1bdde8a = L.marker(
+                [3.003898, 101.500939],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_162a2e51766142be9fd7ecae931f992d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_82c0d3390282491fbcfaa563e1bdde8a.setIcon(icon_162a2e51766142be9fd7ecae931f992d);
+        
+    
+        var popup_fd569a30701d4a8389b0f0190c955ded = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_837333b84cda4feab36e2af955f12de0 = $(`<div id="html_837333b84cda4feab36e2af955f12de0" style="width: 100.0%; height: 100.0%;"><h3> Location 17 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_fd569a30701d4a8389b0f0190c955ded.setContent(html_837333b84cda4feab36e2af955f12de0);
+        
+
+        marker_82c0d3390282491fbcfaa563e1bdde8a.bindPopup(popup_fd569a30701d4a8389b0f0190c955ded)
+        ;
+
+        
+    
+    
+            marker_82c0d3390282491fbcfaa563e1bdde8a.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_37d4cc1c76d848edba8caf3497afd20d = L.marker(
+                [2.8252, 101.706458],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_097c4f5451544556a5b11915f0872a2d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_37d4cc1c76d848edba8caf3497afd20d.setIcon(icon_097c4f5451544556a5b11915f0872a2d);
+        
+    
+        var popup_bf3740c409264888bd0e7a151d13c1b2 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_ad43edb106c24ba0b452c9a422ca47ea = $(`<div id="html_ad43edb106c24ba0b452c9a422ca47ea" style="width: 100.0%; height: 100.0%;"><h3> Location 18 </h3> <br> STATE: SELANGOR <br> DISTRICT: SEPANG <br> CITY: SEPANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_bf3740c409264888bd0e7a151d13c1b2.setContent(html_ad43edb106c24ba0b452c9a422ca47ea);
+        
+
+        marker_37d4cc1c76d848edba8caf3497afd20d.bindPopup(popup_bf3740c409264888bd0e7a151d13c1b2)
+        ;
+
+        
+    
+    
+            marker_37d4cc1c76d848edba8caf3497afd20d.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_99562f796ed1477f8a01912ac8129b6d = L.marker(
+                [3.040305, 101.793227],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_4f534453635c4a198fd316e815d092b9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_99562f796ed1477f8a01912ac8129b6d.setIcon(icon_4f534453635c4a198fd316e815d092b9);
+        
+    
+        var popup_41a67b24fb204c02bc72004f7b83a2ba = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_fe50a73675bd4c2cb57dfdc0768f27ae = $(`<div id="html_fe50a73675bd4c2cb57dfdc0768f27ae" style="width: 100.0%; height: 100.0%;"><h3> Location 19 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_41a67b24fb204c02bc72004f7b83a2ba.setContent(html_fe50a73675bd4c2cb57dfdc0768f27ae);
+        
+
+        marker_99562f796ed1477f8a01912ac8129b6d.bindPopup(popup_41a67b24fb204c02bc72004f7b83a2ba)
+        ;
+
+        
+    
+    
+            marker_99562f796ed1477f8a01912ac8129b6d.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8dce5cf19d0249038bfe6fbd86081b1d = L.marker(
+                [3.012706, 101.40856600000001],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_3bceca6c236744aa85a8108b8139862a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8dce5cf19d0249038bfe6fbd86081b1d.setIcon(icon_3bceca6c236744aa85a8108b8139862a);
+        
+    
+        var popup_34059b026a664e6a9a245f77b2f3c4b0 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_cc6e01f69169417bae933321ffe5f56e = $(`<div id="html_cc6e01f69169417bae933321ffe5f56e" style="width: 100.0%; height: 100.0%;"><h3> Location 20 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: PELABUHAN KLANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_34059b026a664e6a9a245f77b2f3c4b0.setContent(html_cc6e01f69169417bae933321ffe5f56e);
+        
+
+        marker_8dce5cf19d0249038bfe6fbd86081b1d.bindPopup(popup_34059b026a664e6a9a245f77b2f3c4b0)
+        ;
+
+        
+    
+    
+            marker_8dce5cf19d0249038bfe6fbd86081b1d.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e58c46380954afab87143b0b7966d06 = L.marker(
+                [3.0045319999999998, 101.483908],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_be783533742b4b06b2c90b20a1d67e5e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2e58c46380954afab87143b0b7966d06.setIcon(icon_be783533742b4b06b2c90b20a1d67e5e);
+        
+    
+        var popup_75a69f65ab4d41328a1835d245f17143 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_5414c9b44755467cb0abdd9b1e54d0b2 = $(`<div id="html_5414c9b44755467cb0abdd9b1e54d0b2" style="width: 100.0%; height: 100.0%;"><h3> Location 21 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_75a69f65ab4d41328a1835d245f17143.setContent(html_5414c9b44755467cb0abdd9b1e54d0b2);
+        
+
+        marker_2e58c46380954afab87143b0b7966d06.bindPopup(popup_75a69f65ab4d41328a1835d245f17143)
+        ;
+
+        
+    
+    
+            marker_2e58c46380954afab87143b0b7966d06.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6ef809cc5fa44172ad0b80da4517f988 = L.marker(
+                [3.023888, 101.44230300000001],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_9e016fccc177477599a9b8cde818e33f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6ef809cc5fa44172ad0b80da4517f988.setIcon(icon_9e016fccc177477599a9b8cde818e33f);
+        
+    
+        var popup_8d2207c546074417a8e2d7de7a727fbb = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_b401844e7cd34fb689dcb9f1118af8f6 = $(`<div id="html_b401844e7cd34fb689dcb9f1118af8f6" style="width: 100.0%; height: 100.0%;"><h3> Location 22 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_8d2207c546074417a8e2d7de7a727fbb.setContent(html_b401844e7cd34fb689dcb9f1118af8f6);
+        
+
+        marker_6ef809cc5fa44172ad0b80da4517f988.bindPopup(popup_8d2207c546074417a8e2d7de7a727fbb)
+        ;
+
+        
+    
+    
+            marker_6ef809cc5fa44172ad0b80da4517f988.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7422116474ce45c7a97892ce5e0ba01a = L.marker(
+                [3.023703, 101.750601],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_feb47fdd73364adb86b09ae90d26aa55 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_7422116474ce45c7a97892ce5e0ba01a.setIcon(icon_feb47fdd73364adb86b09ae90d26aa55);
+        
+    
+        var popup_5e476327d1d7484582622377413f78fe = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_98ab298f1f85465cba1b891c88bc314f = $(`<div id="html_98ab298f1f85465cba1b891c88bc314f" style="width: 100.0%; height: 100.0%;"><h3> Location 23 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_5e476327d1d7484582622377413f78fe.setContent(html_98ab298f1f85465cba1b891c88bc314f);
+        
+
+        marker_7422116474ce45c7a97892ce5e0ba01a.bindPopup(popup_5e476327d1d7484582622377413f78fe)
+        ;
+
+        
+    
+    
+            marker_7422116474ce45c7a97892ce5e0ba01a.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_de8c2eff195e4e4c87d60d2bc26844a8 = L.marker(
+                [2.827545, 101.73129],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_cd480a7193974ca781acf6edb90fa122 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_de8c2eff195e4e4c87d60d2bc26844a8.setIcon(icon_cd480a7193974ca781acf6edb90fa122);
+        
+    
+        var popup_56c415e778e9438082e9fbded4b5183f = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_836f259c305d4847baedca6c21e20a1a = $(`<div id="html_836f259c305d4847baedca6c21e20a1a" style="width: 100.0%; height: 100.0%;"><h3> Location 24 </h3> <br> STATE: SELANGOR <br> DISTRICT: SEPANG <br> CITY: SEPANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_56c415e778e9438082e9fbded4b5183f.setContent(html_836f259c305d4847baedca6c21e20a1a);
+        
+
+        marker_de8c2eff195e4e4c87d60d2bc26844a8.bindPopup(popup_56c415e778e9438082e9fbded4b5183f)
+        ;
+
+        
+    
+    
+            marker_de8c2eff195e4e4c87d60d2bc26844a8.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7ec19c996488438ea32cca6bf0b41457 = L.marker(
+                [3.256422, 101.658174],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_254417a84b3043d7b7a0f1b5fb9483b4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_7ec19c996488438ea32cca6bf0b41457.setIcon(icon_254417a84b3043d7b7a0f1b5fb9483b4);
+        
+    
+        var popup_bb5e7417730148899b4ec9eaf1075043 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_4ea3562010db45a194a07d123972e535 = $(`<div id="html_4ea3562010db45a194a07d123972e535" style="width: 100.0%; height: 100.0%;"><h3> Location 25 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: BATU CAVES <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_bb5e7417730148899b4ec9eaf1075043.setContent(html_4ea3562010db45a194a07d123972e535);
+        
+
+        marker_7ec19c996488438ea32cca6bf0b41457.bindPopup(popup_bb5e7417730148899b4ec9eaf1075043)
+        ;
+
+        
+    
+    
+            marker_7ec19c996488438ea32cca6bf0b41457.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_42c4621dab524ec19328160b8b16bd3c = L.marker(
+                [3.094225, 101.753794],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_6ff1553817c546dda3b3b85fc7e69cf7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_42c4621dab524ec19328160b8b16bd3c.setIcon(icon_6ff1553817c546dda3b3b85fc7e69cf7);
+        
+    
+        var popup_deb837edd57c4e09a4b370893079ea06 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_4bb84a1744564cb585117d7438de4a02 = $(`<div id="html_4bb84a1744564cb585117d7438de4a02" style="width: 100.0%; height: 100.0%;"><h3> Location 26 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: CHERAS <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_deb837edd57c4e09a4b370893079ea06.setContent(html_4bb84a1744564cb585117d7438de4a02);
+        
+
+        marker_42c4621dab524ec19328160b8b16bd3c.bindPopup(popup_deb837edd57c4e09a4b370893079ea06)
+        ;
+
+        
+    
+    
+            marker_42c4621dab524ec19328160b8b16bd3c.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fc50ad3d66034c92a77a3c9d3dee199e = L.marker(
+                [2.995884, 101.788302],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_22e4e0b61c2e4d03918a1ec63728f4fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_fc50ad3d66034c92a77a3c9d3dee199e.setIcon(icon_22e4e0b61c2e4d03918a1ec63728f4fc);
+        
+    
+        var popup_4705f33b7534456fa348d741887f51a1 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_b4112b1e0fa94c95abd6d16d04b6cf3b = $(`<div id="html_b4112b1e0fa94c95abd6d16d04b6cf3b" style="width: 100.0%; height: 100.0%;"><h3> Location 27 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_4705f33b7534456fa348d741887f51a1.setContent(html_b4112b1e0fa94c95abd6d16d04b6cf3b);
+        
+
+        marker_fc50ad3d66034c92a77a3c9d3dee199e.bindPopup(popup_4705f33b7534456fa348d741887f51a1)
+        ;
+
+        
+    
+    
+            marker_fc50ad3d66034c92a77a3c9d3dee199e.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6dc95e8ccd8e4d79824ad8205bccf363 = L.marker(
+                [3.0050209999999997, 101.536886],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_6b54992613b54171aa0eab0a6d24160d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6dc95e8ccd8e4d79824ad8205bccf363.setIcon(icon_6b54992613b54171aa0eab0a6d24160d);
+        
+    
+        var popup_0fa2d053213d4353a4cebfda51b61e62 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_4e2c4fa3ac554c53ac122e249a5b200b = $(`<div id="html_4e2c4fa3ac554c53ac122e249a5b200b" style="width: 100.0%; height: 100.0%;"><h3> Location 28 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_0fa2d053213d4353a4cebfda51b61e62.setContent(html_4e2c4fa3ac554c53ac122e249a5b200b);
+        
+
+        marker_6dc95e8ccd8e4d79824ad8205bccf363.bindPopup(popup_0fa2d053213d4353a4cebfda51b61e62)
+        ;
+
+        
+    
+    
+            marker_6dc95e8ccd8e4d79824ad8205bccf363.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0f3c72ce49954beebd65f51b3ae2cf97 = L.marker(
+                [3.127077, 101.74175],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_ad2c46d670bc4ccc9c3d77b49e2680fe = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0f3c72ce49954beebd65f51b3ae2cf97.setIcon(icon_ad2c46d670bc4ccc9c3d77b49e2680fe);
+        
+    
+        var popup_92bc88b5f8f54231916315f7b827ee55 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_96aa71a150374b848d8837b5eff36ced = $(`<div id="html_96aa71a150374b848d8837b5eff36ced" style="width: 100.0%; height: 100.0%;"><h3> Location 29 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KUALA LUMPUR <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_92bc88b5f8f54231916315f7b827ee55.setContent(html_96aa71a150374b848d8837b5eff36ced);
+        
+
+        marker_0f3c72ce49954beebd65f51b3ae2cf97.bindPopup(popup_92bc88b5f8f54231916315f7b827ee55)
+        ;
+
+        
+    
+    
+            marker_0f3c72ce49954beebd65f51b3ae2cf97.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e3e7631759f47e1badf92eca326e0a2 = L.marker(
+                [3.065299, 101.48996],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_fdb1d1e2e2a34c458f1cbdf6338b287b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_5e3e7631759f47e1badf92eca326e0a2.setIcon(icon_fdb1d1e2e2a34c458f1cbdf6338b287b);
+        
+    
+        var popup_2e458cdf7ae4443a82c4003881be15be = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_38ac50eff95049c38b293bbf662b8fa5 = $(`<div id="html_38ac50eff95049c38b293bbf662b8fa5" style="width: 100.0%; height: 100.0%;"><h3> Location 30 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_2e458cdf7ae4443a82c4003881be15be.setContent(html_38ac50eff95049c38b293bbf662b8fa5);
+        
+
+        marker_5e3e7631759f47e1badf92eca326e0a2.bindPopup(popup_2e458cdf7ae4443a82c4003881be15be)
+        ;
+
+        
+    
+    
+            marker_5e3e7631759f47e1badf92eca326e0a2.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2a71f396c94644528765093ca594a79a = L.marker(
+                [3.038215, 101.700932],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_c8ef7190f10045dc8d1f4b0d598c55a6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2a71f396c94644528765093ca594a79a.setIcon(icon_c8ef7190f10045dc8d1f4b0d598c55a6);
+        
+    
+        var popup_31b09e521ca0466095ed2ba222b3af66 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_00d019d4690d47feb586333c75876157 = $(`<div id="html_00d019d4690d47feb586333c75876157" style="width: 100.0%; height: 100.0%;"><h3> Location 31 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_31b09e521ca0466095ed2ba222b3af66.setContent(html_00d019d4690d47feb586333c75876157);
+        
+
+        marker_2a71f396c94644528765093ca594a79a.bindPopup(popup_31b09e521ca0466095ed2ba222b3af66)
+        ;
+
+        
+    
+    
+            marker_2a71f396c94644528765093ca594a79a.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1b655304d8684985bfd29971b5e84fe9 = L.marker(
+                [3.097413, 101.55638],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_29c65ef1bfab45128e541daf690c2b2f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1b655304d8684985bfd29971b5e84fe9.setIcon(icon_29c65ef1bfab45128e541daf690c2b2f);
+        
+    
+        var popup_83f021d9f90c4bdc909f8386b0bc406a = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_ee0ada3195d7435caa662ed62087fe74 = $(`<div id="html_ee0ada3195d7435caa662ed62087fe74" style="width: 100.0%; height: 100.0%;"><h3> Location 32 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SHAH ALAM <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_83f021d9f90c4bdc909f8386b0bc406a.setContent(html_ee0ada3195d7435caa662ed62087fe74);
+        
+
+        marker_1b655304d8684985bfd29971b5e84fe9.bindPopup(popup_83f021d9f90c4bdc909f8386b0bc406a)
+        ;
+
+        
+    
+    
+            marker_1b655304d8684985bfd29971b5e84fe9.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_83841edb520c4b08927e8cf577c65f93 = L.marker(
+                [3.038325, 101.58907109999998],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_a6383c9840e7480891f40f808a57661e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_83841edb520c4b08927e8cf577c65f93.setIcon(icon_a6383c9840e7480891f40f808a57661e);
+        
+    
+        var popup_a8da5f940af843ab9524b38fa2d56147 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_c87004b4e442406ba2b5c3d9f51f0938 = $(`<div id="html_c87004b4e442406ba2b5c3d9f51f0938" style="width: 100.0%; height: 100.0%;"><h3> Location 33 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SUBANG JAYA <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_a8da5f940af843ab9524b38fa2d56147.setContent(html_c87004b4e442406ba2b5c3d9f51f0938);
+        
+
+        marker_83841edb520c4b08927e8cf577c65f93.bindPopup(popup_a8da5f940af843ab9524b38fa2d56147)
+        ;
+
+        
+    
+    
+            marker_83841edb520c4b08927e8cf577c65f93.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3ef193603ab54cfc8de3f4991fc9f92b = L.marker(
+                [3.02831, 101.58112],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_e596952f606b464180e51ff2355e1497 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_3ef193603ab54cfc8de3f4991fc9f92b.setIcon(icon_e596952f606b464180e51ff2355e1497);
+        
+    
+        var popup_7894a3e694db4b138789b7ad589c0883 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_bfdff6f3e24d44ff85eeec9e862c70a3 = $(`<div id="html_bfdff6f3e24d44ff85eeec9e862c70a3" style="width: 100.0%; height: 100.0%;"><h3> Location 34 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SUBANG JAYA <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_7894a3e694db4b138789b7ad589c0883.setContent(html_bfdff6f3e24d44ff85eeec9e862c70a3);
+        
+
+        marker_3ef193603ab54cfc8de3f4991fc9f92b.bindPopup(popup_7894a3e694db4b138789b7ad589c0883)
+        ;
+
+        
+    
+    
+            marker_3ef193603ab54cfc8de3f4991fc9f92b.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d9a2d4c0ba1d41e28fab603cb2147783 = L.marker(
+                [3.0160810000000002, 101.428203],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_9287c62455104ae58138576e2e4c4512 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_d9a2d4c0ba1d41e28fab603cb2147783.setIcon(icon_9287c62455104ae58138576e2e4c4512);
+        
+    
+        var popup_c4b15e67e2fb4af5b0cb98793e15674d = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_cf7d5ab8d2524bffb6f7d30569102bbd = $(`<div id="html_cf7d5ab8d2524bffb6f7d30569102bbd" style="width: 100.0%; height: 100.0%;"><h3> Location 35 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: PELABUHAN KLANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_c4b15e67e2fb4af5b0cb98793e15674d.setContent(html_cf7d5ab8d2524bffb6f7d30569102bbd);
+        
+
+        marker_d9a2d4c0ba1d41e28fab603cb2147783.bindPopup(popup_c4b15e67e2fb4af5b0cb98793e15674d)
+        ;
+
+        
+    
+    
+            marker_d9a2d4c0ba1d41e28fab603cb2147783.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ab44e6b7d8b047659d3697ac4a3ae152 = L.marker(
+                [3.426475, 101.177513],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_8a9dabc663ba4d1585756ecb18694495 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_ab44e6b7d8b047659d3697ac4a3ae152.setIcon(icon_8a9dabc663ba4d1585756ecb18694495);
+        
+    
+        var popup_9a67e966ac8e4006975472d3421e7c16 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_2cb4a8eaef8c4ffcb335f80debe5c43d = $(`<div id="html_2cb4a8eaef8c4ffcb335f80debe5c43d" style="width: 100.0%; height: 100.0%;"><h3> Location 36 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA SELANGOR <br> CITY: TANJONG KARANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_9a67e966ac8e4006975472d3421e7c16.setContent(html_2cb4a8eaef8c4ffcb335f80debe5c43d);
+        
+
+        marker_ab44e6b7d8b047659d3697ac4a3ae152.bindPopup(popup_9a67e966ac8e4006975472d3421e7c16)
+        ;
+
+        
+    
+    
+            marker_ab44e6b7d8b047659d3697ac4a3ae152.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_98b4cda62e454917825e54147671f6a4 = L.marker(
+                [3.138191, 101.75753],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_86c2666f25894c248e6df5a737e734bd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_98b4cda62e454917825e54147671f6a4.setIcon(icon_86c2666f25894c248e6df5a737e734bd);
+        
+    
+        var popup_91a2e7b50c824439ad42afc0aa2d003c = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_e981aa4123e446a88ec710ab61a0cece = $(`<div id="html_e981aa4123e446a88ec710ab61a0cece" style="width: 100.0%; height: 100.0%;"><h3> Location 37 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: AMPANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_91a2e7b50c824439ad42afc0aa2d003c.setContent(html_e981aa4123e446a88ec710ab61a0cece);
+        
+
+        marker_98b4cda62e454917825e54147671f6a4.bindPopup(popup_91a2e7b50c824439ad42afc0aa2d003c)
+        ;
+
+        
+    
+    
+            marker_98b4cda62e454917825e54147671f6a4.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e087877d595c445cbb2c53633cc420e2 = L.marker(
+                [3.13596, 101.44156],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_005d0eb34f334c1781bd9795de171e03 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e087877d595c445cbb2c53633cc420e2.setIcon(icon_005d0eb34f334c1781bd9795de171e03);
+        
+    
+        var popup_c2785708f7e84a42b5b2c942c185ebf0 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_d8bb402505dc400a8da5f90c12b92684 = $(`<div id="html_d8bb402505dc400a8da5f90c12b92684" style="width: 100.0%; height: 100.0%;"><h3> Location 38 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_c2785708f7e84a42b5b2c942c185ebf0.setContent(html_d8bb402505dc400a8da5f90c12b92684);
+        
+
+        marker_e087877d595c445cbb2c53633cc420e2.bindPopup(popup_c2785708f7e84a42b5b2c942c185ebf0)
+        ;
+
+        
+    
+    
+            marker_e087877d595c445cbb2c53633cc420e2.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b2d50ace61524386810c32db7c96b3c7 = L.marker(
+                [3.0980630000000002, 101.64573299999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_202c89b04e8649e4ae21c36eb911b37c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b2d50ace61524386810c32db7c96b3c7.setIcon(icon_202c89b04e8649e4ae21c36eb911b37c);
+        
+    
+        var popup_fe3a4844ad36460a9c4788070d077724 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_6b739d502001433a913116a8ddc60bf6 = $(`<div id="html_6b739d502001433a913116a8ddc60bf6" style="width: 100.0%; height: 100.0%;"><h3> Location 39 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_fe3a4844ad36460a9c4788070d077724.setContent(html_6b739d502001433a913116a8ddc60bf6);
+        
+
+        marker_b2d50ace61524386810c32db7c96b3c7.bindPopup(popup_fe3a4844ad36460a9c4788070d077724)
+        ;
+
+        
+    
+    
+            marker_b2d50ace61524386810c32db7c96b3c7.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_177abdfdbbb949748be2bf4aaa7ee377 = L.marker(
+                [2.881264, 101.80799999999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_3bb201d8560f4c058068d7a749b60f9e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_177abdfdbbb949748be2bf4aaa7ee377.setIcon(icon_3bb201d8560f4c058068d7a749b60f9e);
+        
+    
+        var popup_e1e6c1a4afb14b03bbd262a919b85ff5 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_df30b118ed9645d1867df12650efb2e6 = $(`<div id="html_df30b118ed9645d1867df12650efb2e6" style="width: 100.0%; height: 100.0%;"><h3> Location 40 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: HIGH <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_e1e6c1a4afb14b03bbd262a919b85ff5.setContent(html_df30b118ed9645d1867df12650efb2e6);
+        
+
+        marker_177abdfdbbb949748be2bf4aaa7ee377.bindPopup(popup_e1e6c1a4afb14b03bbd262a919b85ff5)
+        ;
+
+        
+    
+    
+            marker_177abdfdbbb949748be2bf4aaa7ee377.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_038d896583594259b2847b950697ac0f = L.marker(
+                [3.00657, 101.668447],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_ae6b52af085b4a889bd82475380a58ec = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_038d896583594259b2847b950697ac0f.setIcon(icon_ae6b52af085b4a889bd82475380a58ec);
+        
+    
+        var popup_416bb287f63449bc81f83e8d7cbac1fe = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_1473385813d3429c9ef7b406283a48ce = $(`<div id="html_1473385813d3429c9ef7b406283a48ce" style="width: 100.0%; height: 100.0%;"><h3> Location 41 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_416bb287f63449bc81f83e8d7cbac1fe.setContent(html_1473385813d3429c9ef7b406283a48ce);
+        
+
+        marker_038d896583594259b2847b950697ac0f.bindPopup(popup_416bb287f63449bc81f83e8d7cbac1fe)
+        ;
+
+        
+    
+    
+            marker_038d896583594259b2847b950697ac0f.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3e73ed0e351447b885e2d1daa6349238 = L.marker(
+                [3.062963, 101.46710999999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_0b136425e7d64dc08d770f796ee82b80 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_3e73ed0e351447b885e2d1daa6349238.setIcon(icon_0b136425e7d64dc08d770f796ee82b80);
+        
+    
+        var popup_5382283addcd4dc2b218c31a140f0ff8 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_a07f336039d343c48df5ae2b1ce062c5 = $(`<div id="html_a07f336039d343c48df5ae2b1ce062c5" style="width: 100.0%; height: 100.0%;"><h3> Location 42 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_5382283addcd4dc2b218c31a140f0ff8.setContent(html_a07f336039d343c48df5ae2b1ce062c5);
+        
+
+        marker_3e73ed0e351447b885e2d1daa6349238.bindPopup(popup_5382283addcd4dc2b218c31a140f0ff8)
+        ;
+
+        
+    
+    
+            marker_3e73ed0e351447b885e2d1daa6349238.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6771e5c98d474593a1510a8d172525e5 = L.marker(
+                [3.012411, 101.60340500000001],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_22a32c43d8704b34841a066a7539c7ac = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6771e5c98d474593a1510a8d172525e5.setIcon(icon_22a32c43d8704b34841a066a7539c7ac);
+        
+    
+        var popup_215feaec458a4c048aa064b3af0dcd5a = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_03f5401f1a23418bbc92584a245d79c9 = $(`<div id="html_03f5401f1a23418bbc92584a245d79c9" style="width: 100.0%; height: 100.0%;"><h3> Location 43 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PUCHONG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_215feaec458a4c048aa064b3af0dcd5a.setContent(html_03f5401f1a23418bbc92584a245d79c9);
+        
+
+        marker_6771e5c98d474593a1510a8d172525e5.bindPopup(popup_215feaec458a4c048aa064b3af0dcd5a)
+        ;
+
+        
+    
+    
+            marker_6771e5c98d474593a1510a8d172525e5.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_600e3e245e9041ea85b3547c7eb4c102 = L.marker(
+                [3.009478, 101.599373],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_34c399ebe9c24ed2b9bc8a2c3ae49338 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_600e3e245e9041ea85b3547c7eb4c102.setIcon(icon_34c399ebe9c24ed2b9bc8a2c3ae49338);
+        
+    
+        var popup_510765b7f13c4963b07b23f8fb5ac22c = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_cb3aee84b0d94f3c987c943fcc7f7133 = $(`<div id="html_cb3aee84b0d94f3c987c943fcc7f7133" style="width: 100.0%; height: 100.0%;"><h3> Location 44 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PUCHONG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_510765b7f13c4963b07b23f8fb5ac22c.setContent(html_cb3aee84b0d94f3c987c943fcc7f7133);
+        
+
+        marker_600e3e245e9041ea85b3547c7eb4c102.bindPopup(popup_510765b7f13c4963b07b23f8fb5ac22c)
+        ;
+
+        
+    
+    
+            marker_600e3e245e9041ea85b3547c7eb4c102.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_87d4dbe713f149e4bca83b85b81b5f21 = L.marker(
+                [3.001193, 101.595342],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_6642dfbf3c4944dca09c1683cece0b6e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_87d4dbe713f149e4bca83b85b81b5f21.setIcon(icon_6642dfbf3c4944dca09c1683cece0b6e);
+        
+    
+        var popup_db7c580c94e94c76bfc4ec003e14bd43 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_790085c1ed3f42048fbab32a4f7e219d = $(`<div id="html_790085c1ed3f42048fbab32a4f7e219d" style="width: 100.0%; height: 100.0%;"><h3> Location 45 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PUCHONG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_db7c580c94e94c76bfc4ec003e14bd43.setContent(html_790085c1ed3f42048fbab32a4f7e219d);
+        
+
+        marker_87d4dbe713f149e4bca83b85b81b5f21.bindPopup(popup_db7c580c94e94c76bfc4ec003e14bd43)
+        ;
+
+        
+    
+    
+            marker_87d4dbe713f149e4bca83b85b81b5f21.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b741b2d4fa7d4290b4105b394bbb3fa9 = L.marker(
+                [2.947892, 101.61793399999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_8cef04bcd72449c591bc6459d6803272 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b741b2d4fa7d4290b4105b394bbb3fa9.setIcon(icon_8cef04bcd72449c591bc6459d6803272);
+        
+    
+        var popup_41c94243422d40089daac34946a65917 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_3f7ba557758640399e8bc77643f08e4b = $(`<div id="html_3f7ba557758640399e8bc77643f08e4b" style="width: 100.0%; height: 100.0%;"><h3> Location 46 </h3> <br> STATE: SELANGOR <br> DISTRICT: SEPANG <br> CITY: PUCHONG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_41c94243422d40089daac34946a65917.setContent(html_3f7ba557758640399e8bc77643f08e4b);
+        
+
+        marker_b741b2d4fa7d4290b4105b394bbb3fa9.bindPopup(popup_41c94243422d40089daac34946a65917)
+        ;
+
+        
+    
+    
+            marker_b741b2d4fa7d4290b4105b394bbb3fa9.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8279119b9e4c43f4aae49fb6aa6518de = L.marker(
+                [2.990988, 101.67604399999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_1d531b372cf04381b54be6562770efa3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8279119b9e4c43f4aae49fb6aa6518de.setIcon(icon_1d531b372cf04381b54be6562770efa3);
+        
+    
+        var popup_11da9d1573a240748e35f15a6dcff197 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_5110f2a2d6354553bab60a7e6e244068 = $(`<div id="html_5110f2a2d6354553bab60a7e6e244068" style="width: 100.0%; height: 100.0%;"><h3> Location 47 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_11da9d1573a240748e35f15a6dcff197.setContent(html_5110f2a2d6354553bab60a7e6e244068);
+        
+
+        marker_8279119b9e4c43f4aae49fb6aa6518de.bindPopup(popup_11da9d1573a240748e35f15a6dcff197)
+        ;
+
+        
+    
+    
+            marker_8279119b9e4c43f4aae49fb6aa6518de.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_638d93096f9240db919ef390151cd0a5 = L.marker(
+                [3.02966, 101.537087],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_1f7a3f2f018d446a9544e47f7f63972d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_638d93096f9240db919ef390151cd0a5.setIcon(icon_1f7a3f2f018d446a9544e47f7f63972d);
+        
+    
+        var popup_f91908094d774efa893f7e3122057c6c = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_89e4222f5b284df4ba450ae209fb96cc = $(`<div id="html_89e4222f5b284df4ba450ae209fb96cc" style="width: 100.0%; height: 100.0%;"><h3> Location 48 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: SHAH ALAM <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_f91908094d774efa893f7e3122057c6c.setContent(html_89e4222f5b284df4ba450ae209fb96cc);
+        
+
+        marker_638d93096f9240db919ef390151cd0a5.bindPopup(popup_f91908094d774efa893f7e3122057c6c)
+        ;
+
+        
+    
+    
+            marker_638d93096f9240db919ef390151cd0a5.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_18af6e93ab0f453d8efb36ae583d6199 = L.marker(
+                [3.041254, 101.636062],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_f64dadf2d6fe451d8f0a17efb26a88bc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_18af6e93ab0f453d8efb36ae583d6199.setIcon(icon_f64dadf2d6fe451d8f0a17efb26a88bc);
+        
+    
+        var popup_1aba84a0493843b7a0bef72cd5d4e101 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_66783d4c633642fe9cca0117a2cdd33c = $(`<div id="html_66783d4c633642fe9cca0117a2cdd33c" style="width: 100.0%; height: 100.0%;"><h3> Location 49 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PUCHONG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_1aba84a0493843b7a0bef72cd5d4e101.setContent(html_66783d4c633642fe9cca0117a2cdd33c);
+        
+
+        marker_18af6e93ab0f453d8efb36ae583d6199.bindPopup(popup_1aba84a0493843b7a0bef72cd5d4e101)
+        ;
+
+        
+    
+    
+            marker_18af6e93ab0f453d8efb36ae583d6199.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4dab96daa3284c0b9fb4a37dc6160f3c = L.marker(
+                [2.996308, 101.669628],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_aa351afa1cd648bf9da6c15e4a0ac2b7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_4dab96daa3284c0b9fb4a37dc6160f3c.setIcon(icon_aa351afa1cd648bf9da6c15e4a0ac2b7);
+        
+    
+        var popup_e6b0ac75881d4d5595c9a4f4c2a5e509 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_f0ef398034544468af163eb6c7f88dde = $(`<div id="html_f0ef398034544468af163eb6c7f88dde" style="width: 100.0%; height: 100.0%;"><h3> Location 50 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_e6b0ac75881d4d5595c9a4f4c2a5e509.setContent(html_f0ef398034544468af163eb6c7f88dde);
+        
+
+        marker_4dab96daa3284c0b9fb4a37dc6160f3c.bindPopup(popup_e6b0ac75881d4d5595c9a4f4c2a5e509)
+        ;
+
+        
+    
+    
+            marker_4dab96daa3284c0b9fb4a37dc6160f3c.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_82d0d334096b4364bb53d9a831ad2ebc = L.marker(
+                [3.0108610000000002, 101.468837],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_8bf00fc942874f35b364736a21ebc965 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_82d0d334096b4364bb53d9a831ad2ebc.setIcon(icon_8bf00fc942874f35b364736a21ebc965);
+        
+    
+        var popup_6754d75112524e8997f6c72c748d739d = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_584424a485b841dc8365ad1228dc58ef = $(`<div id="html_584424a485b841dc8365ad1228dc58ef" style="width: 100.0%; height: 100.0%;"><h3> Location 51 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_6754d75112524e8997f6c72c748d739d.setContent(html_584424a485b841dc8365ad1228dc58ef);
+        
+
+        marker_82d0d334096b4364bb53d9a831ad2ebc.bindPopup(popup_6754d75112524e8997f6c72c748d739d)
+        ;
+
+        
+    
+    
+            marker_82d0d334096b4364bb53d9a831ad2ebc.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_348ffd6c747a4af6a1334f6da0f4315e = L.marker(
+                [3.16168, 101.58135],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_489147d963f9440da3aa71697eb23dd3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_348ffd6c747a4af6a1334f6da0f4315e.setIcon(icon_489147d963f9440da3aa71697eb23dd3);
+        
+    
+        var popup_2d2f70ad57c84a6e90278c6d45166a2e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_565456f4fd6c416f8adeec13319e716d = $(`<div id="html_565456f4fd6c416f8adeec13319e716d" style="width: 100.0%; height: 100.0%;"><h3> Location 52 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_2d2f70ad57c84a6e90278c6d45166a2e.setContent(html_565456f4fd6c416f8adeec13319e716d);
+        
+
+        marker_348ffd6c747a4af6a1334f6da0f4315e.bindPopup(popup_2d2f70ad57c84a6e90278c6d45166a2e)
+        ;
+
+        
+    
+    
+            marker_348ffd6c747a4af6a1334f6da0f4315e.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c890b66b07c14346832fe2f2ee144fd6 = L.marker(
+                [2.9542479999999998, 101.582995],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_4d8208dcf5f54f168732820d67022f95 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c890b66b07c14346832fe2f2ee144fd6.setIcon(icon_4d8208dcf5f54f168732820d67022f95);
+        
+    
+        var popup_73e6390c5558454f8388d035dcea616f = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_9ce4e41ac00440178e82938d904eaa05 = $(`<div id="html_9ce4e41ac00440178e82938d904eaa05" style="width: 100.0%; height: 100.0%;"><h3> Location 53 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA LANGAT <br> CITY: JENJAROM <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_73e6390c5558454f8388d035dcea616f.setContent(html_9ce4e41ac00440178e82938d904eaa05);
+        
+
+        marker_c890b66b07c14346832fe2f2ee144fd6.bindPopup(popup_73e6390c5558454f8388d035dcea616f)
+        ;
+
+        
+    
+    
+            marker_c890b66b07c14346832fe2f2ee144fd6.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9df8bd9ca49847da9e384b77726284ce = L.marker(
+                [3.0765700000000002, 101.489359],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_4068503e0b6541ae8eb26f3755fa1454 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9df8bd9ca49847da9e384b77726284ce.setIcon(icon_4068503e0b6541ae8eb26f3755fa1454);
+        
+    
+        var popup_338a4d0da8a84e58b440de0654cd3883 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_d22c6bbdb04e4cf3bd4f353d243cc8ae = $(`<div id="html_d22c6bbdb04e4cf3bd4f353d243cc8ae" style="width: 100.0%; height: 100.0%;"><h3> Location 54 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SHAH ALAM <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_338a4d0da8a84e58b440de0654cd3883.setContent(html_d22c6bbdb04e4cf3bd4f353d243cc8ae);
+        
+
+        marker_9df8bd9ca49847da9e384b77726284ce.bindPopup(popup_338a4d0da8a84e58b440de0654cd3883)
+        ;
+
+        
+    
+    
+            marker_9df8bd9ca49847da9e384b77726284ce.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b83adae8891241d891d8f591f414f34b = L.marker(
+                [3.005537, 101.462988],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_c19cfaebc651439a8d046087ac7a7e9f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b83adae8891241d891d8f591f414f34b.setIcon(icon_c19cfaebc651439a8d046087ac7a7e9f);
+        
+    
+        var popup_eb64d9698f7243cca2f48cac6c9ce69a = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_9faa90e9ff544579a8a14c46da21b912 = $(`<div id="html_9faa90e9ff544579a8a14c46da21b912" style="width: 100.0%; height: 100.0%;"><h3> Location 55 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_eb64d9698f7243cca2f48cac6c9ce69a.setContent(html_9faa90e9ff544579a8a14c46da21b912);
+        
+
+        marker_b83adae8891241d891d8f591f414f34b.bindPopup(popup_eb64d9698f7243cca2f48cac6c9ce69a)
+        ;
+
+        
+    
+    
+            marker_b83adae8891241d891d8f591f414f34b.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_04060ac363a5411aa94ee033f16fba13 = L.marker(
+                [3.505501, 101.104518],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_9c9b4a37cee94f71b1425de4f29119ab = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_04060ac363a5411aa94ee033f16fba13.setIcon(icon_9c9b4a37cee94f71b1425de4f29119ab);
+        
+    
+        var popup_4ced572d7e9c4a198d71bad866b00bd1 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_c40c0fa131d94624ac9d5a2555b4537c = $(`<div id="html_c40c0fa131d94624ac9d5a2555b4537c" style="width: 100.0%; height: 100.0%;"><h3> Location 56 </h3> <br> STATE: SELANGOR <br> DISTRICT: SABAK BERNAM <br> CITY: SEKINCHAN <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_4ced572d7e9c4a198d71bad866b00bd1.setContent(html_c40c0fa131d94624ac9d5a2555b4537c);
+        
+
+        marker_04060ac363a5411aa94ee033f16fba13.bindPopup(popup_4ced572d7e9c4a198d71bad866b00bd1)
+        ;
+
+        
+    
+    
+            marker_04060ac363a5411aa94ee033f16fba13.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2cbdb1fb61a649259bc47655bbf139bf = L.marker(
+                [2.998793, 101.43051],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_ec12535cafa144ff896f63656cda3540 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2cbdb1fb61a649259bc47655bbf139bf.setIcon(icon_ec12535cafa144ff896f63656cda3540);
+        
+    
+        var popup_bec4426b77fa4ffe99d76cfd43a603f6 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_70c5b474112b460d8345ff69fe9ba2dd = $(`<div id="html_70c5b474112b460d8345ff69fe9ba2dd" style="width: 100.0%; height: 100.0%;"><h3> Location 57 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_bec4426b77fa4ffe99d76cfd43a603f6.setContent(html_70c5b474112b460d8345ff69fe9ba2dd);
+        
+
+        marker_2cbdb1fb61a649259bc47655bbf139bf.bindPopup(popup_bec4426b77fa4ffe99d76cfd43a603f6)
+        ;
+
+        
+    
+    
+            marker_2cbdb1fb61a649259bc47655bbf139bf.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b2fffa16dec472e9ff0ef1989f20395 = L.marker(
+                [3.039643, 101.418363],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_97d1bc0f83e84426a35340595b260b8f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8b2fffa16dec472e9ff0ef1989f20395.setIcon(icon_97d1bc0f83e84426a35340595b260b8f);
+        
+    
+        var popup_4917d0122a4b458882d633565534831e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_b4801eed4d0347319d8393e6e03f0ef3 = $(`<div id="html_b4801eed4d0347319d8393e6e03f0ef3" style="width: 100.0%; height: 100.0%;"><h3> Location 58 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_4917d0122a4b458882d633565534831e.setContent(html_b4801eed4d0347319d8393e6e03f0ef3);
+        
+
+        marker_8b2fffa16dec472e9ff0ef1989f20395.bindPopup(popup_4917d0122a4b458882d633565534831e)
+        ;
+
+        
+    
+    
+            marker_8b2fffa16dec472e9ff0ef1989f20395.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_501bfe6766f24f3fa0fd3a7a4875f851 = L.marker(
+                [3.0422569999999998, 101.42592900000001],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_3205819e27a646d4b9cfbd10a7e22759 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_501bfe6766f24f3fa0fd3a7a4875f851.setIcon(icon_3205819e27a646d4b9cfbd10a7e22759);
+        
+    
+        var popup_b53fd8cf609c4346b09d47b5940516e3 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_2484935ddbb04a288fa121e7a996f577 = $(`<div id="html_2484935ddbb04a288fa121e7a996f577" style="width: 100.0%; height: 100.0%;"><h3> Location 59 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_b53fd8cf609c4346b09d47b5940516e3.setContent(html_2484935ddbb04a288fa121e7a996f577);
+        
+
+        marker_501bfe6766f24f3fa0fd3a7a4875f851.bindPopup(popup_b53fd8cf609c4346b09d47b5940516e3)
+        ;
+
+        
+    
+    
+            marker_501bfe6766f24f3fa0fd3a7a4875f851.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_373289ec35f24e0db12db92e248d3421 = L.marker(
+                [3.078059, 101.61049100000001],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_aefe002f37a64e2f8aa75eee44be0131 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_373289ec35f24e0db12db92e248d3421.setIcon(icon_aefe002f37a64e2f8aa75eee44be0131);
+        
+    
+        var popup_f1ba7ab73cc94fda80684797d23f3ca1 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_2129fc68edc7410b891f45d5ba46baba = $(`<div id="html_2129fc68edc7410b891f45d5ba46baba" style="width: 100.0%; height: 100.0%;"><h3> Location 60 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_f1ba7ab73cc94fda80684797d23f3ca1.setContent(html_2129fc68edc7410b891f45d5ba46baba);
+        
+
+        marker_373289ec35f24e0db12db92e248d3421.bindPopup(popup_f1ba7ab73cc94fda80684797d23f3ca1)
+        ;
+
+        
+    
+    
+            marker_373289ec35f24e0db12db92e248d3421.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_33064c68c764400e9eb2fcc52d29bc3f = L.marker(
+                [3.061625, 101.641875],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_236db52f53fb4e548ada2378f370bede = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_33064c68c764400e9eb2fcc52d29bc3f.setIcon(icon_236db52f53fb4e548ada2378f370bede);
+        
+    
+        var popup_041704aa100943dbbd8bfbeed4ac7c89 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_3870723d760d49c6995f4f451b46e170 = $(`<div id="html_3870723d760d49c6995f4f451b46e170" style="width: 100.0%; height: 100.0%;"><h3> Location 61 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PUCHONG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_041704aa100943dbbd8bfbeed4ac7c89.setContent(html_3870723d760d49c6995f4f451b46e170);
+        
+
+        marker_33064c68c764400e9eb2fcc52d29bc3f.bindPopup(popup_041704aa100943dbbd8bfbeed4ac7c89)
+        ;
+
+        
+    
+    
+            marker_33064c68c764400e9eb2fcc52d29bc3f.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c0f8987fee90490f9e20f3728a708b34 = L.marker(
+                [3.236516, 101.6816512],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_e8894644dbcb416fad0afe21114a7ade = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_c0f8987fee90490f9e20f3728a708b34.setIcon(icon_e8894644dbcb416fad0afe21114a7ade);
+        
+    
+        var popup_4d9751e8279949f8910695fbc06a4e80 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_28519e77bb7141f992665a8f3fe62e33 = $(`<div id="html_28519e77bb7141f992665a8f3fe62e33" style="width: 100.0%; height: 100.0%;"><h3> Location 62 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: BATU CAVES <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_4d9751e8279949f8910695fbc06a4e80.setContent(html_28519e77bb7141f992665a8f3fe62e33);
+        
+
+        marker_c0f8987fee90490f9e20f3728a708b34.bindPopup(popup_4d9751e8279949f8910695fbc06a4e80)
+        ;
+
+        
+    
+    
+            marker_c0f8987fee90490f9e20f3728a708b34.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6dccd10014a143a2a200670481b4525b = L.marker(
+                [3.096876, 101.44424599999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_9bd8dcc8f0e54b27a57fe0fc8f171915 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6dccd10014a143a2a200670481b4525b.setIcon(icon_9bd8dcc8f0e54b27a57fe0fc8f171915);
+        
+    
+        var popup_1cf4e0a12d64469099125dfa43fe374e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_e6f0c841cb834c749016cb411d38b832 = $(`<div id="html_e6f0c841cb834c749016cb411d38b832" style="width: 100.0%; height: 100.0%;"><h3> Location 63 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SHAH ALAM <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_1cf4e0a12d64469099125dfa43fe374e.setContent(html_e6f0c841cb834c749016cb411d38b832);
+        
+
+        marker_6dccd10014a143a2a200670481b4525b.bindPopup(popup_1cf4e0a12d64469099125dfa43fe374e)
+        ;
+
+        
+    
+    
+            marker_6dccd10014a143a2a200670481b4525b.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_060e2993d8a745678a6ba8ccc30ed496 = L.marker(
+                [3.229289, 101.697836],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_116eabbe592b4e62ae0b944a28d77b18 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_060e2993d8a745678a6ba8ccc30ed496.setIcon(icon_116eabbe592b4e62ae0b944a28d77b18);
+        
+    
+        var popup_ef4a4f8ad79148d5ab7323c61ad43b57 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_e06e15aafc754679848604acfd3fe516 = $(`<div id="html_e06e15aafc754679848604acfd3fe516" style="width: 100.0%; height: 100.0%;"><h3> Location 64 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: BATU CAVES <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_ef4a4f8ad79148d5ab7323c61ad43b57.setContent(html_e06e15aafc754679848604acfd3fe516);
+        
+
+        marker_060e2993d8a745678a6ba8ccc30ed496.bindPopup(popup_ef4a4f8ad79148d5ab7323c61ad43b57)
+        ;
+
+        
+    
+    
+            marker_060e2993d8a745678a6ba8ccc30ed496.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1962d82e1beb49caac15f89a265f06dd = L.marker(
+                [3.67256, 100.988947],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_495bca72585d47158507ce7295020237 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1962d82e1beb49caac15f89a265f06dd.setIcon(icon_495bca72585d47158507ce7295020237);
+        
+    
+        var popup_1b868ef349b94ebab444eb2a8ff54ce4 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_1f9fb4151ef548029ef989be34ee8630 = $(`<div id="html_1f9fb4151ef548029ef989be34ee8630" style="width: 100.0%; height: 100.0%;"><h3> Location 65 </h3> <br> STATE: SELANGOR <br> DISTRICT: SABAK BERNAM <br> CITY: SUNGAI BESAR <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_1b868ef349b94ebab444eb2a8ff54ce4.setContent(html_1f9fb4151ef548029ef989be34ee8630);
+        
+
+        marker_1962d82e1beb49caac15f89a265f06dd.bindPopup(popup_1b868ef349b94ebab444eb2a8ff54ce4)
+        ;
+
+        
+    
+    
+            marker_1962d82e1beb49caac15f89a265f06dd.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_94f82acd774a4237942533b1c2c20477 = L.marker(
+                [3.025099, 101.732743],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_4071f657d5994196a5506de03e1c5414 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_94f82acd774a4237942533b1c2c20477.setIcon(icon_4071f657d5994196a5506de03e1c5414);
+        
+    
+        var popup_e8370ebe431f45e29ac225425ac97e9d = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_49d28974d3f947328e02c2ad2f538672 = $(`<div id="html_49d28974d3f947328e02c2ad2f538672" style="width: 100.0%; height: 100.0%;"><h3> Location 66 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: LOW <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_e8370ebe431f45e29ac225425ac97e9d.setContent(html_49d28974d3f947328e02c2ad2f538672);
+        
+
+        marker_94f82acd774a4237942533b1c2c20477.bindPopup(popup_e8370ebe431f45e29ac225425ac97e9d)
+        ;
+
+        
+    
+    
+            marker_94f82acd774a4237942533b1c2c20477.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0addda48f7b64551895c5bf4bc2597ca = L.marker(
+                [3.11247, 101.61671],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_a872600b2503440ab4d9b5a2b2cf6d4c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0addda48f7b64551895c5bf4bc2597ca.setIcon(icon_a872600b2503440ab4d9b5a2b2cf6d4c);
+        
+    
+        var popup_2a9e93b6dc9f4b68a4854cd7c2767608 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_5489faf27823474b871c66f7a00687f7 = $(`<div id="html_5489faf27823474b871c66f7a00687f7" style="width: 100.0%; height: 100.0%;"><h3> Location 67 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_2a9e93b6dc9f4b68a4854cd7c2767608.setContent(html_5489faf27823474b871c66f7a00687f7);
+        
+
+        marker_0addda48f7b64551895c5bf4bc2597ca.bindPopup(popup_2a9e93b6dc9f4b68a4854cd7c2767608)
+        ;
+
+        
+    
+    
+            marker_0addda48f7b64551895c5bf4bc2597ca.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7e1e76f5c8e74c98b1f42f37e549a7fc = L.marker(
+                [3.229289, 101.697836],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_8bbf76cde5be45bdb52c21f48062cec6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_7e1e76f5c8e74c98b1f42f37e549a7fc.setIcon(icon_8bbf76cde5be45bdb52c21f48062cec6);
+        
+    
+        var popup_361ffc5fd7264a8db6fb886d599aa2c0 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_feebb51641404daebebf022bee7aa3b4 = $(`<div id="html_feebb51641404daebebf022bee7aa3b4" style="width: 100.0%; height: 100.0%;"><h3> Location 68 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: BATU CAVES <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_361ffc5fd7264a8db6fb886d599aa2c0.setContent(html_feebb51641404daebebf022bee7aa3b4);
+        
+
+        marker_7e1e76f5c8e74c98b1f42f37e549a7fc.bindPopup(popup_361ffc5fd7264a8db6fb886d599aa2c0)
+        ;
+
+        
+    
+    
+            marker_7e1e76f5c8e74c98b1f42f37e549a7fc.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cb30a35e524b4bffa8c4bac8b7e60529 = L.marker(
+                [3.067222, 101.649775],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_1b69e3e1551549ab9bf99ca433818996 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_cb30a35e524b4bffa8c4bac8b7e60529.setIcon(icon_1b69e3e1551549ab9bf99ca433818996);
+        
+    
+        var popup_e0ba5a38a2d34a3a933c97f7617a24e1 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_adb018e6adb44ca49110d047e09512f7 = $(`<div id="html_adb018e6adb44ca49110d047e09512f7" style="width: 100.0%; height: 100.0%;"><h3> Location 69 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PUCHONG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_e0ba5a38a2d34a3a933c97f7617a24e1.setContent(html_adb018e6adb44ca49110d047e09512f7);
+        
+
+        marker_cb30a35e524b4bffa8c4bac8b7e60529.bindPopup(popup_e0ba5a38a2d34a3a933c97f7617a24e1)
+        ;
+
+        
+    
+    
+            marker_cb30a35e524b4bffa8c4bac8b7e60529.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1d72bbbba6a84cb7bd325adb28f1c5f1 = L.marker(
+                [2.974113, 101.580372],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_6110d898ee6746d4a19b9f63aadb30ce = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1d72bbbba6a84cb7bd325adb28f1c5f1.setIcon(icon_6110d898ee6746d4a19b9f63aadb30ce);
+        
+    
+        var popup_e8024f3cd3c9466781a7ebf30c1cc7ff = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_a9fab3b225834c6887998fde4c3e63b4 = $(`<div id="html_a9fab3b225834c6887998fde4c3e63b4" style="width: 100.0%; height: 100.0%;"><h3> Location 70 </h3> <br> STATE: SELANGOR <br> DISTRICT: SEPANG <br> CITY: PUCHONG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_e8024f3cd3c9466781a7ebf30c1cc7ff.setContent(html_a9fab3b225834c6887998fde4c3e63b4);
+        
+
+        marker_1d72bbbba6a84cb7bd325adb28f1c5f1.bindPopup(popup_e8024f3cd3c9466781a7ebf30c1cc7ff)
+        ;
+
+        
+    
+    
+            marker_1d72bbbba6a84cb7bd325adb28f1c5f1.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_80cdf444c65d475e8eb5b85ce3042781 = L.marker(
+                [3.083389, 101.629306],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_0a1911a79f9441ff85349d8e8fcb7b9b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_80cdf444c65d475e8eb5b85ce3042781.setIcon(icon_0a1911a79f9441ff85349d8e8fcb7b9b);
+        
+    
+        var popup_a3c9d319f31e474fb3b1d2333bdd5894 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_0aca98cc92c44cb19b14542b38f911a1 = $(`<div id="html_0aca98cc92c44cb19b14542b38f911a1" style="width: 100.0%; height: 100.0%;"><h3> Location 71 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_a3c9d319f31e474fb3b1d2333bdd5894.setContent(html_0aca98cc92c44cb19b14542b38f911a1);
+        
+
+        marker_80cdf444c65d475e8eb5b85ce3042781.bindPopup(popup_a3c9d319f31e474fb3b1d2333bdd5894)
+        ;
+
+        
+    
+    
+            marker_80cdf444c65d475e8eb5b85ce3042781.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e9f82f3ea584b1bb081c87a7ab0e042 = L.marker(
+                [2.978703, 101.771321],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_46e2a1d1f05e4db287b503f485564ede = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0e9f82f3ea584b1bb081c87a7ab0e042.setIcon(icon_46e2a1d1f05e4db287b503f485564ede);
+        
+    
+        var popup_2352cc22bc28421eafd249a09bc162d2 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_03c193a5399a456c909593949866c6bf = $(`<div id="html_03c193a5399a456c909593949866c6bf" style="width: 100.0%; height: 100.0%;"><h3> Location 72 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_2352cc22bc28421eafd249a09bc162d2.setContent(html_03c193a5399a456c909593949866c6bf);
+        
+
+        marker_0e9f82f3ea584b1bb081c87a7ab0e042.bindPopup(popup_2352cc22bc28421eafd249a09bc162d2)
+        ;
+
+        
+    
+    
+            marker_0e9f82f3ea584b1bb081c87a7ab0e042.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e034e0119f3e4249addde35bedc2d580 = L.marker(
+                [2.886777, 101.790474],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_587a6b8a72274c62838c53cf4c47fe18 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e034e0119f3e4249addde35bedc2d580.setIcon(icon_587a6b8a72274c62838c53cf4c47fe18);
+        
+    
+        var popup_fbe619d296ce4289af92fc8511831e8a = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_643f313af4ad478d91823b3eff781267 = $(`<div id="html_643f313af4ad478d91823b3eff781267" style="width: 100.0%; height: 100.0%;"><h3> Location 73 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_fbe619d296ce4289af92fc8511831e8a.setContent(html_643f313af4ad478d91823b3eff781267);
+        
+
+        marker_e034e0119f3e4249addde35bedc2d580.bindPopup(popup_fbe619d296ce4289af92fc8511831e8a)
+        ;
+
+        
+    
+    
+            marker_e034e0119f3e4249addde35bedc2d580.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_59a85e5be5eb4476925eb9dae9de5a6e = L.marker(
+                [2.986314, 101.465723],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_2495f847d4394166851b504ce6dd56e5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_59a85e5be5eb4476925eb9dae9de5a6e.setIcon(icon_2495f847d4394166851b504ce6dd56e5);
+        
+    
+        var popup_d81bd36ded0548e280df7e01cbb27c4e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_33f363ae58684103b9e33bec98fd1543 = $(`<div id="html_33f363ae58684103b9e33bec98fd1543" style="width: 100.0%; height: 100.0%;"><h3> Location 74 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_d81bd36ded0548e280df7e01cbb27c4e.setContent(html_33f363ae58684103b9e33bec98fd1543);
+        
+
+        marker_59a85e5be5eb4476925eb9dae9de5a6e.bindPopup(popup_d81bd36ded0548e280df7e01cbb27c4e)
+        ;
+
+        
+    
+    
+            marker_59a85e5be5eb4476925eb9dae9de5a6e.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e74aae2046cb4cf6b49cda62c3eedd5e = L.marker(
+                [3.2411470000000002, 101.675197],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_60d563c25308430f8ffec427f8d416c8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_e74aae2046cb4cf6b49cda62c3eedd5e.setIcon(icon_60d563c25308430f8ffec427f8d416c8);
+        
+    
+        var popup_0c9c4c1d88034f458e3431ac6f9cc315 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_f37ed6f517fc421f8bb3162231b4f251 = $(`<div id="html_f37ed6f517fc421f8bb3162231b4f251" style="width: 100.0%; height: 100.0%;"><h3> Location 75 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: BATU CAVES <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_0c9c4c1d88034f458e3431ac6f9cc315.setContent(html_f37ed6f517fc421f8bb3162231b4f251);
+        
+
+        marker_e74aae2046cb4cf6b49cda62c3eedd5e.bindPopup(popup_0c9c4c1d88034f458e3431ac6f9cc315)
+        ;
+
+        
+    
+    
+            marker_e74aae2046cb4cf6b49cda62c3eedd5e.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_206214f9fe9c4cf5bd4667174be29fc2 = L.marker(
+                [3.230743, 101.6945449],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_5e69be4d59eb4fe48d23265486b2f0ae = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_206214f9fe9c4cf5bd4667174be29fc2.setIcon(icon_5e69be4d59eb4fe48d23265486b2f0ae);
+        
+    
+        var popup_40ebb3348e1f45b2883a67d51f77ce8c = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_f66f15de37a346ac8fa87e7a832e8044 = $(`<div id="html_f66f15de37a346ac8fa87e7a832e8044" style="width: 100.0%; height: 100.0%;"><h3> Location 76 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: BATU CAVES <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_40ebb3348e1f45b2883a67d51f77ce8c.setContent(html_f66f15de37a346ac8fa87e7a832e8044);
+        
+
+        marker_206214f9fe9c4cf5bd4667174be29fc2.bindPopup(popup_40ebb3348e1f45b2883a67d51f77ce8c)
+        ;
+
+        
+    
+    
+            marker_206214f9fe9c4cf5bd4667174be29fc2.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6f06ff81570944aaa0de256f360b7ad4 = L.marker(
+                [3.2514461, 101.6864746],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_e88bba7ab476494f91cd836826814748 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_6f06ff81570944aaa0de256f360b7ad4.setIcon(icon_e88bba7ab476494f91cd836826814748);
+        
+    
+        var popup_3ba267603cfb44cbabcbff77d4931349 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_ec39e4bdd37845f0b95f5b8bd1c12590 = $(`<div id="html_ec39e4bdd37845f0b95f5b8bd1c12590" style="width: 100.0%; height: 100.0%;"><h3> Location 77 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: BATU CAVES <br> ACTUAL SALES: LOW <br> PREDICTED SALES: HIGH</div>`)[0];
+            popup_3ba267603cfb44cbabcbff77d4931349.setContent(html_ec39e4bdd37845f0b95f5b8bd1c12590);
+        
+
+        marker_6f06ff81570944aaa0de256f360b7ad4.bindPopup(popup_3ba267603cfb44cbabcbff77d4931349)
+        ;
+
+        
+    
+    
+            marker_6f06ff81570944aaa0de256f360b7ad4.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9bf1ba36ab3d425599ec7fbc9b0e6f7e = L.marker(
+                [3.3216706, 101.2670246],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_65e2dab44d0c40a18f14338c7137a9aa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9bf1ba36ab3d425599ec7fbc9b0e6f7e.setIcon(icon_65e2dab44d0c40a18f14338c7137a9aa);
+        
+    
+        var popup_3742a01bdd3c4688831f7edb058291fe = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_808fd2c5444243638d68725e1f148130 = $(`<div id="html_808fd2c5444243638d68725e1f148130" style="width: 100.0%; height: 100.0%;"><h3> Location 78 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA SELANGOR <br> CITY: KUALA SELANGOR <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_3742a01bdd3c4688831f7edb058291fe.setContent(html_808fd2c5444243638d68725e1f148130);
+        
+
+        marker_9bf1ba36ab3d425599ec7fbc9b0e6f7e.bindPopup(popup_3742a01bdd3c4688831f7edb058291fe)
+        ;
+
+        
+    
+    
+            marker_9bf1ba36ab3d425599ec7fbc9b0e6f7e.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0bb66242365c4e12980ec22eb48f3116 = L.marker(
+                [3.4264089999999996, 101.1767141],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_b84cdf69736d4243a9e22eb7b6b7888d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0bb66242365c4e12980ec22eb48f3116.setIcon(icon_b84cdf69736d4243a9e22eb7b6b7888d);
+        
+    
+        var popup_db738869a7d24814b4b37e49aa94841d = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_b491111854ae4819bb7e42db93b18771 = $(`<div id="html_b491111854ae4819bb7e42db93b18771" style="width: 100.0%; height: 100.0%;"><h3> Location 79 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA SELANGOR <br> CITY: TANJONG KARANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_db738869a7d24814b4b37e49aa94841d.setContent(html_b491111854ae4819bb7e42db93b18771);
+        
+
+        marker_0bb66242365c4e12980ec22eb48f3116.bindPopup(popup_db738869a7d24814b4b37e49aa94841d)
+        ;
+
+        
+    
+    
+            marker_0bb66242365c4e12980ec22eb48f3116.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_221a5074220c412e84822d1d956ef4f1 = L.marker(
+                [3.262266, 101.30327009999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_8d4888aeeb62484291b4efae1ebdab42 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_221a5074220c412e84822d1d956ef4f1.setIcon(icon_8d4888aeeb62484291b4efae1ebdab42);
+        
+    
+        var popup_2b2d47e4368a4fb0b230cab94cec760e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_5c0ca111c50d40148ccae7f608a8ac55 = $(`<div id="html_5c0ca111c50d40148ccae7f608a8ac55" style="width: 100.0%; height: 100.0%;"><h3> Location 80 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA SELANGOR <br> CITY: JERAM <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_2b2d47e4368a4fb0b230cab94cec760e.setContent(html_5c0ca111c50d40148ccae7f608a8ac55);
+        
+
+        marker_221a5074220c412e84822d1d956ef4f1.bindPopup(popup_2b2d47e4368a4fb0b230cab94cec760e)
+        ;
+
+        
+    
+    
+            marker_221a5074220c412e84822d1d956ef4f1.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9f51e374e7a040278b398201f81ad8e6 = L.marker(
+                [3.3779529999999998, 101.4062371],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_fb86b1423f55423b812e36c301f87b9e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9f51e374e7a040278b398201f81ad8e6.setIcon(icon_fb86b1423f55423b812e36c301f87b9e);
+        
+    
+        var popup_ec9c6016e214450e92fc7fe8dac14c0c = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_2421271d80554b0c8ff28bb3a1c0a746 = $(`<div id="html_2421271d80554b0c8ff28bb3a1c0a746" style="width: 100.0%; height: 100.0%;"><h3> Location 81 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA SELANGOR <br> CITY: BATANG BERJUNTAI <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_ec9c6016e214450e92fc7fe8dac14c0c.setContent(html_2421271d80554b0c8ff28bb3a1c0a746);
+        
+
+        marker_9f51e374e7a040278b398201f81ad8e6.bindPopup(popup_ec9c6016e214450e92fc7fe8dac14c0c)
+        ;
+
+        
+    
+    
+            marker_9f51e374e7a040278b398201f81ad8e6.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_096f0ce002a04f55bece51706ad57162 = L.marker(
+                [3.378732, 101.410375],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_16812294594049f5a2da895b7d95193f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_096f0ce002a04f55bece51706ad57162.setIcon(icon_16812294594049f5a2da895b7d95193f);
+        
+    
+        var popup_bc2ed25e7dbe405a90aee20b22b47e4e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_a9b23f5f3553456ba4339446aa9de917 = $(`<div id="html_a9b23f5f3553456ba4339446aa9de917" style="width: 100.0%; height: 100.0%;"><h3> Location 82 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA SELANGOR <br> CITY: BESTARI JAYA <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_bc2ed25e7dbe405a90aee20b22b47e4e.setContent(html_a9b23f5f3553456ba4339446aa9de917);
+        
+
+        marker_096f0ce002a04f55bece51706ad57162.bindPopup(popup_bc2ed25e7dbe405a90aee20b22b47e4e)
+        ;
+
+        
+    
+    
+            marker_096f0ce002a04f55bece51706ad57162.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b510be8d7aca4e6c931c7175fc3134a4 = L.marker(
+                [3.3036190000000003, 101.59644300000001],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_1fffc4590ee540fdb6ebfe3c11011d82 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b510be8d7aca4e6c931c7175fc3134a4.setIcon(icon_1fffc4590ee540fdb6ebfe3c11011d82);
+        
+    
+        var popup_657022d208274145a769190aa57f896f = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_16afa5848a95482da12c1ef2b90ada55 = $(`<div id="html_16afa5848a95482da12c1ef2b90ada55" style="width: 100.0%; height: 100.0%;"><h3> Location 83 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: RAWANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_657022d208274145a769190aa57f896f.setContent(html_16afa5848a95482da12c1ef2b90ada55);
+        
+
+        marker_b510be8d7aca4e6c931c7175fc3134a4.bindPopup(popup_657022d208274145a769190aa57f896f)
+        ;
+
+        
+    
+    
+            marker_b510be8d7aca4e6c931c7175fc3134a4.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_df5a9b36e3514b609182be399752f702 = L.marker(
+                [3.318374, 101.575909],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_e45aad75ba214418a4be53db7b1158e6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_df5a9b36e3514b609182be399752f702.setIcon(icon_e45aad75ba214418a4be53db7b1158e6);
+        
+    
+        var popup_2d6a2f50a0594acc9c54db6633cbf72e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_3ac95ece603f43f4a6af1771a81aa98a = $(`<div id="html_3ac95ece603f43f4a6af1771a81aa98a" style="width: 100.0%; height: 100.0%;"><h3> Location 84 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: RAWANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_2d6a2f50a0594acc9c54db6633cbf72e.setContent(html_3ac95ece603f43f4a6af1771a81aa98a);
+        
+
+        marker_df5a9b36e3514b609182be399752f702.bindPopup(popup_2d6a2f50a0594acc9c54db6633cbf72e)
+        ;
+
+        
+    
+    
+            marker_df5a9b36e3514b609182be399752f702.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b429dd3688b44a9da5ffbcc49917f930 = L.marker(
+                [3.11852, 101.76031],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_ab91dca41dde4113a2866f8aa7eaa8b3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b429dd3688b44a9da5ffbcc49917f930.setIcon(icon_ab91dca41dde4113a2866f8aa7eaa8b3);
+        
+    
+        var popup_5769b42ef05a412f8da8d71306928fe4 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_21bf79ee38384ca1ba01f53e84be39c4 = $(`<div id="html_21bf79ee38384ca1ba01f53e84be39c4" style="width: 100.0%; height: 100.0%;"><h3> Location 85 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: AMPANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_5769b42ef05a412f8da8d71306928fe4.setContent(html_21bf79ee38384ca1ba01f53e84be39c4);
+        
+
+        marker_b429dd3688b44a9da5ffbcc49917f930.bindPopup(popup_5769b42ef05a412f8da8d71306928fe4)
+        ;
+
+        
+    
+    
+            marker_b429dd3688b44a9da5ffbcc49917f930.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_03758851936d4438b79810aa9c7946d0 = L.marker(
+                [3.01136, 101.47367],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_2f473f42b67643a2a0d96bf4bb04499d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_03758851936d4438b79810aa9c7946d0.setIcon(icon_2f473f42b67643a2a0d96bf4bb04499d);
+        
+    
+        var popup_190aebdbc2a940a8bd257aa0db390e1f = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_5e8b00a628de4c28af40b4d3e2dd66b8 = $(`<div id="html_5e8b00a628de4c28af40b4d3e2dd66b8" style="width: 100.0%; height: 100.0%;"><h3> Location 86 </h3> <br> STATE: SELANGOR <br> DISTRICT: KLANG <br> CITY: KLANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_190aebdbc2a940a8bd257aa0db390e1f.setContent(html_5e8b00a628de4c28af40b4d3e2dd66b8);
+        
+
+        marker_03758851936d4438b79810aa9c7946d0.bindPopup(popup_190aebdbc2a940a8bd257aa0db390e1f)
+        ;
+
+        
+    
+    
+            marker_03758851936d4438b79810aa9c7946d0.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0d09bb77b2124c0da9829cfd2ec2ac4a = L.marker(
+                [3.1718580000000003, 101.750927],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_fe14bbdafae44c2d867c1d5437f638f3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0d09bb77b2124c0da9829cfd2ec2ac4a.setIcon(icon_fe14bbdafae44c2d867c1d5437f638f3);
+        
+    
+        var popup_5bbb73421f91478db5ef202d925ccb85 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_beefcf8af2414dd7b86e3e407b61e8e5 = $(`<div id="html_beefcf8af2414dd7b86e3e407b61e8e5" style="width: 100.0%; height: 100.0%;"><h3> Location 87 </h3> <br> STATE: SELANGOR <br> DISTRICT: GOMBAK <br> CITY: KUALA LUMPUR <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_5bbb73421f91478db5ef202d925ccb85.setContent(html_beefcf8af2414dd7b86e3e407b61e8e5);
+        
+
+        marker_0d09bb77b2124c0da9829cfd2ec2ac4a.bindPopup(popup_5bbb73421f91478db5ef202d925ccb85)
+        ;
+
+        
+    
+    
+            marker_0d09bb77b2124c0da9829cfd2ec2ac4a.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8e4b6e5ddc7044c2b06eda463240d1f8 = L.marker(
+                [2.8123810000000002, 101.497609],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_174cab220df348c59e0af3533bed0d38 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8e4b6e5ddc7044c2b06eda463240d1f8.setIcon(icon_174cab220df348c59e0af3533bed0d38);
+        
+    
+        var popup_b97f4b137ea04374a0648e04b9bd5013 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_0e53ecf803614800b518167c550ee36b = $(`<div id="html_0e53ecf803614800b518167c550ee36b" style="width: 100.0%; height: 100.0%;"><h3> Location 88 </h3> <br> STATE: SELANGOR <br> DISTRICT: KUALA LANGAT <br> CITY: BANTING <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_b97f4b137ea04374a0648e04b9bd5013.setContent(html_0e53ecf803614800b518167c550ee36b);
+        
+
+        marker_8e4b6e5ddc7044c2b06eda463240d1f8.bindPopup(popup_b97f4b137ea04374a0648e04b9bd5013)
+        ;
+
+        
+    
+    
+            marker_8e4b6e5ddc7044c2b06eda463240d1f8.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f9fda1c0ccae4c17b62daa4357c306f3 = L.marker(
+                [3.10921, 101.62573],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_11c8256dea05476db953f9f649269c2a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f9fda1c0ccae4c17b62daa4357c306f3.setIcon(icon_11c8256dea05476db953f9f649269c2a);
+        
+    
+        var popup_1027c09381e542fcb368ad23f3d2b340 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_597e23f05ac14ac6bde73099a59eb126 = $(`<div id="html_597e23f05ac14ac6bde73099a59eb126" style="width: 100.0%; height: 100.0%;"><h3> Location 89 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_1027c09381e542fcb368ad23f3d2b340.setContent(html_597e23f05ac14ac6bde73099a59eb126);
+        
+
+        marker_f9fda1c0ccae4c17b62daa4357c306f3.bindPopup(popup_1027c09381e542fcb368ad23f3d2b340)
+        ;
+
+        
+    
+    
+            marker_f9fda1c0ccae4c17b62daa4357c306f3.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0f7317c7d29d433e9fc899b7e1269043 = L.marker(
+                [3.1652709999999997, 101.608162],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_3d6e9ac8bcb64f13b615413a0751e0a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0f7317c7d29d433e9fc899b7e1269043.setIcon(icon_3d6e9ac8bcb64f13b615413a0751e0a7);
+        
+    
+        var popup_248a7196f66a4fe49938667591db76ab = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_9f6372a35a804b158d23cd719a9d1beb = $(`<div id="html_9f6372a35a804b158d23cd719a9d1beb" style="width: 100.0%; height: 100.0%;"><h3> Location 90 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: PETALING JAYA <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_248a7196f66a4fe49938667591db76ab.setContent(html_9f6372a35a804b158d23cd719a9d1beb);
+        
+
+        marker_0f7317c7d29d433e9fc899b7e1269043.bindPopup(popup_248a7196f66a4fe49938667591db76ab)
+        ;
+
+        
+    
+    
+            marker_0f7317c7d29d433e9fc899b7e1269043.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bc0bf0c412d54d05bd4d73eed3b26dca = L.marker(
+                [3.007575, 101.8083859],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_0bebd1463e0c40868fa293b476682b90 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_bc0bf0c412d54d05bd4d73eed3b26dca.setIcon(icon_0bebd1463e0c40868fa293b476682b90);
+        
+    
+        var popup_3551ab284aed4bccbaef0065d3363a31 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_a4e01c3c68d64c70a06d3891f6392130 = $(`<div id="html_a4e01c3c68d64c70a06d3891f6392130" style="width: 100.0%; height: 100.0%;"><h3> Location 91 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_3551ab284aed4bccbaef0065d3363a31.setContent(html_a4e01c3c68d64c70a06d3891f6392130);
+        
+
+        marker_bc0bf0c412d54d05bd4d73eed3b26dca.bindPopup(popup_3551ab284aed4bccbaef0065d3363a31)
+        ;
+
+        
+    
+    
+            marker_bc0bf0c412d54d05bd4d73eed3b26dca.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01eec0f0db4743d8a52b1168cfff7e32 = L.marker(
+                [2.992938, 101.8159301],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_fa9b06c762de43eba2d4a41823021558 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_01eec0f0db4743d8a52b1168cfff7e32.setIcon(icon_fa9b06c762de43eba2d4a41823021558);
+        
+    
+        var popup_e152148913d5435c8710fdcbbdab155b = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_898fcc78489b495dbeb206782dab9bb6 = $(`<div id="html_898fcc78489b495dbeb206782dab9bb6" style="width: 100.0%; height: 100.0%;"><h3> Location 92 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_e152148913d5435c8710fdcbbdab155b.setContent(html_898fcc78489b495dbeb206782dab9bb6);
+        
+
+        marker_01eec0f0db4743d8a52b1168cfff7e32.bindPopup(popup_e152148913d5435c8710fdcbbdab155b)
+        ;
+
+        
+    
+    
+            marker_01eec0f0db4743d8a52b1168cfff7e32.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a0d55bea57d849fb95698cf48dff46a1 = L.marker(
+                [3.0105916, 101.6754561],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_7e44bc4c74304bd4b6e0926f4b2f9019 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_a0d55bea57d849fb95698cf48dff46a1.setIcon(icon_7e44bc4c74304bd4b6e0926f4b2f9019);
+        
+    
+        var popup_4fe76a04ba2145faae94f505661abb86 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_84c5551aeb164a9bbe2def60cd54bfb3 = $(`<div id="html_84c5551aeb164a9bbe2def60cd54bfb3" style="width: 100.0%; height: 100.0%;"><h3> Location 93 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_4fe76a04ba2145faae94f505661abb86.setContent(html_84c5551aeb164a9bbe2def60cd54bfb3);
+        
+
+        marker_a0d55bea57d849fb95698cf48dff46a1.bindPopup(popup_4fe76a04ba2145faae94f505661abb86)
+        ;
+
+        
+    
+    
+            marker_a0d55bea57d849fb95698cf48dff46a1.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2c96ddae59a64a24a372d5240ed2899d = L.marker(
+                [2.970644, 101.773815],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_e402488f73314bdf84dcb71b63df7291 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2c96ddae59a64a24a372d5240ed2899d.setIcon(icon_e402488f73314bdf84dcb71b63df7291);
+        
+    
+        var popup_182ae6a3b3124051adb84a70069ee8c7 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_dc0ca4c2a4f04beaa5147704be6361ad = $(`<div id="html_dc0ca4c2a4f04beaa5147704be6361ad" style="width: 100.0%; height: 100.0%;"><h3> Location 94 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: BANDAR BARU BANGI <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_182ae6a3b3124051adb84a70069ee8c7.setContent(html_dc0ca4c2a4f04beaa5147704be6361ad);
+        
+
+        marker_2c96ddae59a64a24a372d5240ed2899d.bindPopup(popup_182ae6a3b3124051adb84a70069ee8c7)
+        ;
+
+        
+    
+    
+            marker_2c96ddae59a64a24a372d5240ed2899d.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f612839f77fa479e8b12ee14c6096979 = L.marker(
+                [3.007997, 101.713113],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_62a153bc76c447319124777c5e1529c6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_f612839f77fa479e8b12ee14c6096979.setIcon(icon_62a153bc76c447319124777c5e1529c6);
+        
+    
+        var popup_4c71c63497fa4046b1bcac561d59ae03 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_f64a7a3f19f84da49857a9ef1ac62803 = $(`<div id="html_f64a7a3f19f84da49857a9ef1ac62803" style="width: 100.0%; height: 100.0%;"><h3> Location 95 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_4c71c63497fa4046b1bcac561d59ae03.setContent(html_f64a7a3f19f84da49857a9ef1ac62803);
+        
+
+        marker_f612839f77fa479e8b12ee14c6096979.bindPopup(popup_4c71c63497fa4046b1bcac561d59ae03)
+        ;
+
+        
+    
+    
+            marker_f612839f77fa479e8b12ee14c6096979.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a08858b5cc454f1b99b25fc3f0c59533 = L.marker(
+                [2.9828744, 101.8152704],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_bb996fe04ac6466989d75bb76139645f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_a08858b5cc454f1b99b25fc3f0c59533.setIcon(icon_bb996fe04ac6466989d75bb76139645f);
+        
+    
+        var popup_8d7dc818da2a4d6cab8a43e5c40d405a = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_5bf0375ee0fd47efb7f765728766cd29 = $(`<div id="html_5bf0375ee0fd47efb7f765728766cd29" style="width: 100.0%; height: 100.0%;"><h3> Location 96 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_8d7dc818da2a4d6cab8a43e5c40d405a.setContent(html_5bf0375ee0fd47efb7f765728766cd29);
+        
+
+        marker_a08858b5cc454f1b99b25fc3f0c59533.bindPopup(popup_8d7dc818da2a4d6cab8a43e5c40d405a)
+        ;
+
+        
+    
+    
+            marker_a08858b5cc454f1b99b25fc3f0c59533.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_839c3a71993246929d434b6f790d4e45 = L.marker(
+                [2.947441, 101.8451441],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_eb2bd52e9ad249d7987c376499ccc171 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_839c3a71993246929d434b6f790d4e45.setIcon(icon_eb2bd52e9ad249d7987c376499ccc171);
+        
+    
+        var popup_7eeb5bfdffdc46d7b98b142191a826e2 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_4bcb7a7bf0b54bd2b3a4d8a74e71c71e = $(`<div id="html_4bcb7a7bf0b54bd2b3a4d8a74e71c71e" style="width: 100.0%; height: 100.0%;"><h3> Location 97 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: SEMENYIH <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_7eeb5bfdffdc46d7b98b142191a826e2.setContent(html_4bcb7a7bf0b54bd2b3a4d8a74e71c71e);
+        
+
+        marker_839c3a71993246929d434b6f790d4e45.bindPopup(popup_7eeb5bfdffdc46d7b98b142191a826e2)
+        ;
+
+        
+    
+    
+            marker_839c3a71993246929d434b6f790d4e45.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cfa6b2e1b7bf45768720b046fe19bd26 = L.marker(
+                [2.8863198, 101.79079490000001],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_4862d50bac334b98aa43dbb339ecb121 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_cfa6b2e1b7bf45768720b046fe19bd26.setIcon(icon_4862d50bac334b98aa43dbb339ecb121);
+        
+    
+        var popup_1648ba84ab744da0a2101071ec666f52 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_4c5c6032616442c79a541881dd4e96b7 = $(`<div id="html_4c5c6032616442c79a541881dd4e96b7" style="width: 100.0%; height: 100.0%;"><h3> Location 98 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_1648ba84ab744da0a2101071ec666f52.setContent(html_4c5c6032616442c79a541881dd4e96b7);
+        
+
+        marker_cfa6b2e1b7bf45768720b046fe19bd26.bindPopup(popup_1648ba84ab744da0a2101071ec666f52)
+        ;
+
+        
+    
+    
+            marker_cfa6b2e1b7bf45768720b046fe19bd26.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0b3c1c0c2f1f44b7bf692ffbda52caa4 = L.marker(
+                [2.9452441, 101.8437443],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_1d1053bbb24c4de2a43e3ca1396d9474 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0b3c1c0c2f1f44b7bf692ffbda52caa4.setIcon(icon_1d1053bbb24c4de2a43e3ca1396d9474);
+        
+    
+        var popup_ee90232735c74289b383ab75aba9c855 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_b78d1a7427b9499f86df458a30401b74 = $(`<div id="html_b78d1a7427b9499f86df458a30401b74" style="width: 100.0%; height: 100.0%;"><h3> Location 99 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: SEMENYIH <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_ee90232735c74289b383ab75aba9c855.setContent(html_b78d1a7427b9499f86df458a30401b74);
+        
+
+        marker_0b3c1c0c2f1f44b7bf692ffbda52caa4.bindPopup(popup_ee90232735c74289b383ab75aba9c855)
+        ;
+
+        
+    
+    
+            marker_0b3c1c0c2f1f44b7bf692ffbda52caa4.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7ad23471b9fa4ec18bbe0cbf0dbf4ca8 = L.marker(
+                [2.9573936, 101.7906079],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_023280f0cbaf467fba25c9a190c075e8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_7ad23471b9fa4ec18bbe0cbf0dbf4ca8.setIcon(icon_023280f0cbaf467fba25c9a190c075e8);
+        
+    
+        var popup_148985e5dc014d42bb975f1da8c05e1e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_609d9736b04a4367ba0eea311383b914 = $(`<div id="html_609d9736b04a4367ba0eea311383b914" style="width: 100.0%; height: 100.0%;"><h3> Location 100 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_148985e5dc014d42bb975f1da8c05e1e.setContent(html_609d9736b04a4367ba0eea311383b914);
+        
+
+        marker_7ad23471b9fa4ec18bbe0cbf0dbf4ca8.bindPopup(popup_148985e5dc014d42bb975f1da8c05e1e)
+        ;
+
+        
+    
+    
+            marker_7ad23471b9fa4ec18bbe0cbf0dbf4ca8.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a247173249f141778001293770941872 = L.marker(
+                [2.9772421000000002, 101.79547209999998],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_ba4a82e256ba488db082f3440aafdc4d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_a247173249f141778001293770941872.setIcon(icon_ba4a82e256ba488db082f3440aafdc4d);
+        
+    
+        var popup_b7a92edf28614c69b6f449f62be55f38 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_299595d68286452287953a05541f7f2f = $(`<div id="html_299595d68286452287953a05541f7f2f" style="width: 100.0%; height: 100.0%;"><h3> Location 101 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_b7a92edf28614c69b6f449f62be55f38.setContent(html_299595d68286452287953a05541f7f2f);
+        
+
+        marker_a247173249f141778001293770941872.bindPopup(popup_b7a92edf28614c69b6f449f62be55f38)
+        ;
+
+        
+    
+    
+            marker_a247173249f141778001293770941872.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b54bc56246bd42dc8fdd7baa7ec737f6 = L.marker(
+                [2.959228, 101.7777282],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_865710b9bb2a439e8f81d333661a63eb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_b54bc56246bd42dc8fdd7baa7ec737f6.setIcon(icon_865710b9bb2a439e8f81d333661a63eb);
+        
+    
+        var popup_1807239217274065add1511c4c9500ac = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_17b8abb218544ed7b6272c13a0bd28d5 = $(`<div id="html_17b8abb218544ed7b6272c13a0bd28d5" style="width: 100.0%; height: 100.0%;"><h3> Location 102 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: BANDAR BARU BANGI <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_1807239217274065add1511c4c9500ac.setContent(html_17b8abb218544ed7b6272c13a0bd28d5);
+        
+
+        marker_b54bc56246bd42dc8fdd7baa7ec737f6.bindPopup(popup_1807239217274065add1511c4c9500ac)
+        ;
+
+        
+    
+    
+            marker_b54bc56246bd42dc8fdd7baa7ec737f6.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4180ce40d7ce4bdb89d5eb77aad8298c = L.marker(
+                [2.9311967, 101.8558519],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_fd1d35850cf640709cbebb85772888fb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_4180ce40d7ce4bdb89d5eb77aad8298c.setIcon(icon_fd1d35850cf640709cbebb85772888fb);
+        
+    
+        var popup_8300b6afb53d41f4842a14f352af5157 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_02adb9f1354a448ebad2222e5ccf0c40 = $(`<div id="html_02adb9f1354a448ebad2222e5ccf0c40" style="width: 100.0%; height: 100.0%;"><h3> Location 103 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: SEMENYIH <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_8300b6afb53d41f4842a14f352af5157.setContent(html_02adb9f1354a448ebad2222e5ccf0c40);
+        
+
+        marker_4180ce40d7ce4bdb89d5eb77aad8298c.bindPopup(popup_8300b6afb53d41f4842a14f352af5157)
+        ;
+
+        
+    
+    
+            marker_4180ce40d7ce4bdb89d5eb77aad8298c.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_454bfc072ea54055b92ba19f5429ab81 = L.marker(
+                [2.9078945, 101.8635006],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_f900e7769dc9436281cbe27e8eff7d45 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_454bfc072ea54055b92ba19f5429ab81.setIcon(icon_f900e7769dc9436281cbe27e8eff7d45);
+        
+    
+        var popup_966c8b4ec9eb48f6870ab7f8eddc2b20 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_dee61de9c2f14299a8ab19e971041929 = $(`<div id="html_dee61de9c2f14299a8ab19e971041929" style="width: 100.0%; height: 100.0%;"><h3> Location 104 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: BERANANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_966c8b4ec9eb48f6870ab7f8eddc2b20.setContent(html_dee61de9c2f14299a8ab19e971041929);
+        
+
+        marker_454bfc072ea54055b92ba19f5429ab81.bindPopup(popup_966c8b4ec9eb48f6870ab7f8eddc2b20)
+        ;
+
+        
+    
+    
+            marker_454bfc072ea54055b92ba19f5429ab81.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_25475a7ff98a4a5cb3402615e2f18ae3 = L.marker(
+                [3.0973439999999997, 101.801149],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_d11856a5b18c4fc48874533ffdef3f8f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_25475a7ff98a4a5cb3402615e2f18ae3.setIcon(icon_d11856a5b18c4fc48874533ffdef3f8f);
+        
+    
+        var popup_ab85ca981e804c8e82243c209aad5e94 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_f8c92df3e5e8452698c2749f20c9144d = $(`<div id="html_f8c92df3e5e8452698c2749f20c9144d" style="width: 100.0%; height: 100.0%;"><h3> Location 105 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: HULU LANGAT <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_ab85ca981e804c8e82243c209aad5e94.setContent(html_f8c92df3e5e8452698c2749f20c9144d);
+        
+
+        marker_25475a7ff98a4a5cb3402615e2f18ae3.bindPopup(popup_ab85ca981e804c8e82243c209aad5e94)
+        ;
+
+        
+    
+    
+            marker_25475a7ff98a4a5cb3402615e2f18ae3.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e46828b951646b18ad74707edfdc22a = L.marker(
+                [2.8807061000000003, 101.8087112],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_cef97a73c3ce452a8d6dcb8fea09be35 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0e46828b951646b18ad74707edfdc22a.setIcon(icon_cef97a73c3ce452a8d6dcb8fea09be35);
+        
+    
+        var popup_82fd70adbf60484a99debaf772138e2e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_9b9fba64edfd4b6a943b22f7202d330d = $(`<div id="html_9b9fba64edfd4b6a943b22f7202d330d" style="width: 100.0%; height: 100.0%;"><h3> Location 106 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_82fd70adbf60484a99debaf772138e2e.setContent(html_9b9fba64edfd4b6a943b22f7202d330d);
+        
+
+        marker_0e46828b951646b18ad74707edfdc22a.bindPopup(popup_82fd70adbf60484a99debaf772138e2e)
+        ;
+
+        
+    
+    
+            marker_0e46828b951646b18ad74707edfdc22a.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b27dce42d77414388885bef72844cd2 = L.marker(
+                [3.4243887, 101.55686709999999],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_5646e83f69cd4a09a4bc60bf349ec1e0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_7b27dce42d77414388885bef72844cd2.setIcon(icon_5646e83f69cd4a09a4bc60bf349ec1e0);
+        
+    
+        var popup_98ca008b32804f9d861800d125010e5c = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_7efb9b6c180947ffa2cf068ee265ea65 = $(`<div id="html_7efb9b6c180947ffa2cf068ee265ea65" style="width: 100.0%; height: 100.0%;"><h3> Location 107 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU SELANGOR <br> CITY: RAWANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_98ca008b32804f9d861800d125010e5c.setContent(html_7efb9b6c180947ffa2cf068ee265ea65);
+        
+
+        marker_7b27dce42d77414388885bef72844cd2.bindPopup(popup_98ca008b32804f9d861800d125010e5c)
+        ;
+
+        
+    
+    
+            marker_7b27dce42d77414388885bef72844cd2.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d8ea21d10ffc4f88b69644f4b39667c7 = L.marker(
+                [2.9877984, 101.7842778],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_eaea43e80c0847a0a4225edb99f4f43a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_d8ea21d10ffc4f88b69644f4b39667c7.setIcon(icon_eaea43e80c0847a0a4225edb99f4f43a);
+        
+    
+        var popup_6c314b1402fa4095b3bb91955b9a9e76 = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_81aabb7685d344e6b83cb7678adb8a59 = $(`<div id="html_81aabb7685d344e6b83cb7678adb8a59" style="width: 100.0%; height: 100.0%;"><h3> Location 108 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU LANGAT <br> CITY: KAJANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_6c314b1402fa4095b3bb91955b9a9e76.setContent(html_81aabb7685d344e6b83cb7678adb8a59);
+        
+
+        marker_d8ea21d10ffc4f88b69644f4b39667c7.bindPopup(popup_6c314b1402fa4095b3bb91955b9a9e76)
+        ;
+
+        
+    
+    
+            marker_d8ea21d10ffc4f88b69644f4b39667c7.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0187a08ad5494092bdf2b3efcd0a9b0b = L.marker(
+                [3.398464, 101.5676399],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_ec69f9b51ad141a88c378a4d358e3948 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_0187a08ad5494092bdf2b3efcd0a9b0b.setIcon(icon_ec69f9b51ad141a88c378a4d358e3948);
+        
+    
+        var popup_7647c30831354ee1bd34033449b36a1b = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_8445553e187048fb9486025e8d2bc81f = $(`<div id="html_8445553e187048fb9486025e8d2bc81f" style="width: 100.0%; height: 100.0%;"><h3> Location 109 </h3> <br> STATE: SELANGOR <br> DISTRICT: HULU SELANGOR <br> CITY: RAWANG <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_7647c30831354ee1bd34033449b36a1b.setContent(html_8445553e187048fb9486025e8d2bc81f);
+        
+
+        marker_0187a08ad5494092bdf2b3efcd0a9b0b.bindPopup(popup_7647c30831354ee1bd34033449b36a1b)
+        ;
+
+        
+    
+    
+            marker_0187a08ad5494092bdf2b3efcd0a9b0b.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b91c7740dc14c95a89bc63a4e8016f9 = L.marker(
+                [3.027319, 101.72105400000001],
+                {}
+            ).addTo(map_2b661232ab3d49d794ee59cfbf02b426);
+        
+    
+            var icon_66e9b83dfd1f4ff1a97ea9743c4cd035 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "circle", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8b91c7740dc14c95a89bc63a4e8016f9.setIcon(icon_66e9b83dfd1f4ff1a97ea9743c4cd035);
+        
+    
+        var popup_8fd4b650208945aea9fa0140eb0ce38e = L.popup({"maxWidth": 200, "minWidth": 100});
+
+        
+            var html_923b70db57b44c7e93c8461bc8b3e983 = $(`<div id="html_923b70db57b44c7e93c8461bc8b3e983" style="width: 100.0%; height: 100.0%;"><h3> Location 110 </h3> <br> STATE: SELANGOR <br> DISTRICT: PETALING <br> CITY: SERI KEMBANGAN <br> ACTUAL SALES: LOW <br> PREDICTED SALES: LOW</div>`)[0];
+            popup_8fd4b650208945aea9fa0140eb0ce38e.setContent(html_923b70db57b44c7e93c8461bc8b3e983);
+        
+
+        marker_8b91c7740dc14c95a89bc63a4e8016f9.bindPopup(popup_8fd4b650208945aea9fa0140eb0ce38e)
+        ;
+
+        
+    
+    
+            marker_8b91c7740dc14c95a89bc63a4e8016f9.bindTooltip(
+                `<div>
+                     click
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
